@@ -83,7 +83,7 @@
         <a class="start-tile" href="projects.html"><div class="art p-laterite"></div><span class="st-kicker">Projects</span><span class="st-title">See the work</span><span class="st-go" aria-hidden="true">→</span></a>
         <a class="start-tile" href="events.html"><div class="art p-indigo-dye"></div><span class="st-kicker">Events</span><span class="st-title">Come to an event</span><span class="st-go" aria-hidden="true">→</span></a>
         <a class="start-tile" href="abuja.html"><div class="art p-sun"></div><span class="st-kicker">NDD Abuja</span><span class="st-title">Explore the district</span><span class="st-go" aria-hidden="true">→</span></a>
-        <a class="start-tile" href="journal.html"><div class="art p-palm"></div><span class="st-kicker">Journal</span><span class="st-title">Read the stories</span><span class="st-go" aria-hidden="true">→</span></a>
+        <a class="start-tile" href="journal.html"><div class="art p-palm"></div><span class="st-kicker">Journal</span><span class="st-title">Issue 1 coming soon</span><span class="st-go" aria-hidden="true">→</span></a>
         <a class="start-tile t-wide" href="membership.html"><div class="art p-asooke"></div><span class="st-kicker">Membership</span><span class="st-title">Join NDD</span><span class="st-go" aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -94,15 +94,6 @@
       <div class="section-head"><h2>Who's in <em>NDD</em></h2><a href="directory.html">Member directory →</a></div>
       <div class="pillar-tabs" role="tablist" aria-label="Six pillars" id="pillar-tabs"></div>
       <div id="pillar-panels"></div>
-      <p class="sample-note" style="margin-top:20px"><b>Preview:</b> sample members. NDD's founding members will be announced in Q1 2027.</p>
-    </div>
-  </section>
-
-  <section class="section" id="projects" style="padding-top:0">
-    <div class="wrap">
-      <div class="section-head"><h2>Member <em>projects</em></h2><a href="projects.html">Explore all projects →</a></div>
-      <div class="project-grid" id="home-projects"></div>
-      <p class="sample-note" style="margin-top:20px"><b>Preview:</b> sample projects with placeholder images.</p>
     </div>
   </section>
 
@@ -152,40 +143,13 @@
     </div>
   </section>
 
-  <section class="section" id="journal" style="padding-top:0">
-    <div class="wrap">
-      <div class="section-head"><h2>NDD <em>Journal</em></h2><a href="journal.html">All stories →</a></div>
-      <div class="cards">
-        <div class="card soon">
-          <div class="frame"><div class="art p-concrete" data-caption="Central Area, Abuja"></div></div>
-          <div class="meta"><b>Cities</b><span class="soon-tag">Coming soon</span></div>
-          <h3>Abuja at fifty</h3>
-          <p>A modernist capital, re-examined by a new generation of architects.</p>
-        </div>
-        <div class="card soon">
-          <div class="frame"><div class="art p-indigo-dye" data-caption="Kano"></div></div>
-          <div class="meta"><b>Craft &amp; Heritage</b><span class="soon-tag">Coming soon</span></div>
-          <h3>Indigo: from dye pit to facade</h3>
-          <p>Kano's dye pits, and the designers bringing indigo into interiors and architecture.</p>
-        </div>
-        <div class="card soon">
-          <div class="frame"><div class="art p-sun" data-caption="Bida, Niger State"></div></div>
-          <div class="meta"><b>Craft &amp; Heritage</b><span class="soon-tag">Coming soon</span></div>
-          <h3>Bida brass and glass, now</h3>
-          <p>A centuries-old craft, and the contemporary pieces being made with it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="locations" style="padding-top:0">
     <div class="wrap">
       <div class="section-head"><h2>NDD <em>locations</em></h2><span class="eyebrow">One national district, city by city</span></div>
       <ul class="district-list on-light">
         <li><a href="abuja.html"><span class="n">01</span><span class="name">NDD Abuja</span><span class="tag">Our first location · Founding 2027</span><span class="count">Explore →</span></a></li>
-        <li><a class="soon" href="#"><span class="n">02</span><span class="name">NDD Lagos</span><span class="tag">Future location</span><span class="count">Later</span></a></li>
-        <li><a class="soon" href="#"><span class="n">03</span><span class="name">NDD Kano</span><span class="tag">Future location</span><span class="count">Later</span></a></li>
-        <li><a class="soon" href="#"><span class="n">04</span><span class="name">NDD Kaduna</span><span class="tag">Future location</span><span class="count">Later</span></a></li>
+        <li><a class="soon" href="#"><span class="n">02</span><span class="name">NDD Kano</span><span class="tag">Future location</span><span class="count">Later</span></a></li>
+        <li><a class="soon" href="#"><span class="n">03</span><span class="name">NDD Kaduna</span><span class="tag">Future location</span><span class="count">Later</span></a></li>
       </ul>
     </div>
   </section>
@@ -237,8 +201,8 @@
   panels.innerHTML = keys.map((k, i) => {
     const members = DD.STUDIOS.filter(s => s.cat === k).sort((a, b) => DD.rank(b) - DD.rank(a)).slice(0, 3);
     return `<div class="pillar-panel" role="tabpanel" id="panel-${k}" aria-labelledby="tab-${k}"${i ? ' hidden' : ''}>
-      <div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${i + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p><a class="btn" href="directory.html?cat=${k}">All ${DD.CATS[k]} members</a></div>
-      <div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>
+      <div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${i + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p></div>
+      ${members.length ? `<div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>` : `<div class="pp-soon"><p class="eyebrow clay">Coming soon</p><p>Founding ${DD.CATS[k]} members will be announced in Q1 2027.</p><a class="btn" href="list.html">Register interest</a></div>`}
     </div>`;
   }).join('');
   const btns = [...tabs.querySelectorAll('[role=tab]')];
@@ -252,7 +216,6 @@
       e.preventDefault(); const n = btns[(i + d + btns.length) % btns.length]; select(n); n.focus();
     });
   });
-  document.getElementById('home-projects').innerHTML = DD.PROJECTS.filter(p => p.with.length).slice(0, 3).map(DD.projectCard).join('');
 </script>
 </body>
 </html>

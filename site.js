@@ -36,19 +36,12 @@ window.SECTOR_QUARTERS = [
 ];
 window.SECTOR_NAMES = { architecture: 'Architecture & Interiors', fashion: 'Fashion & Textiles', objects: 'Furniture & Objects', craft: 'Craft & Heritage', art: 'Art & Galleries', media: 'Media & Experience' };
 
+// An event with `tba: true` shows its month and "To be announced", with no RSVP.
 window.EVENTS = [
-  { id: 'salon-indigo', big: 'Jan', small: '2027', where: 'A member studio, Abuja', date: 'January 2027 · date to be confirmed',
-    title: 'NDD Salon: Indigo, from dye pit to facade', kind: 'Salon',
-    blurb: 'The first NDD Salon. An architect, a fashion designer and an indigo dyer talk about one material over dinner.', price: 'Limited seats · RSVP required' },
-  { id: 'open-studios', big: 'Feb', small: '2027', where: 'Member studios across Abuja', date: 'February 2027 · date to be confirmed',
-    title: 'NDD Open Studios: the first trail', kind: 'Open Studios',
-    blurb: 'Walk or drive between member studios and showrooms with the NDD map. Meet the people behind the work.', price: 'Free · RSVP to get the map' },
-  { id: 'launch', big: 'Mar', small: '2027', where: 'Venue to be announced', date: 'March 2027 · date to be confirmed',
-    title: 'NDD Abuja launch & first Pop-up Showroom', kind: 'Launch',
-    blurb: 'The public launch of NDD Abuja: a curated, shoppable showroom of member work, and the first issue of the NDD Journal.', price: 'Free · RSVP required' },
-  { id: 'ndd-week', big: 'Late', small: '2027', where: 'Abuja', date: 'Late 2027 · save the date',
-    title: 'NDD Week 2027', kind: 'Festival',
-    blurb: 'The first edition of our flagship festival: exhibitions, talks, open studios, a fashion presentation and international guests.', price: 'Register interest for early access' }
+  { id: 'jan-2027', big: 'Jan', small: '2027', title: 'To be announced', tba: true },
+  { id: 'feb-2027', big: 'Feb', small: '2027', title: 'To be announced', tba: true },
+  { id: 'mar-2027', big: 'Mar', small: '2027', title: 'To be announced', tba: true },
+  { id: 'late-2027', big: 'Late', small: '2027', title: 'To be announced', tba: true }
 ];
 
 /* ==========================================================================
@@ -239,18 +232,22 @@ window.EVENTS = [
   /* ---------- Compact event lists: <div class="events" data-events="3"> ---------- */
   $$('[data-events]').forEach(el => {
     el.innerHTML = EVENTS.slice(0, +el.dataset.events || EVENTS.length).map(e => `
-      <div class="event"><time>${e.big}<small>${e.small} · ${e.kind}</small></time>
-        <div><h3>${e.title}</h3><p>${e.blurb}</p></div>
-        <a class="btn" href="events.html#${e.id}">${e.id === 'ndd-week' ? 'Register interest' : 'RSVP'}</a></div>`).join('');
+      <div class="event"><time>${e.big}<small>${e.small}</small></time>
+        <div><h3>${e.title}</h3></div>
+        ${e.tba ? '<span class="ec-tba">Details soon</span>' : `<a class="btn" href="events.html#${e.id}">${e.id === 'ndd-week' ? 'Register interest' : 'RSVP'}</a>`}</div>`).join('');
   });
 
   /* ---------- Event cards: <div class="event-cards" data-event-cards="4"> ---------- */
   $$('[data-event-cards]').forEach(el => {
-    el.innerHTML = EVENTS.slice(0, +el.dataset.eventCards || EVENTS.length).map(e => `
+    el.innerHTML = EVENTS.slice(0, +el.dataset.eventCards || EVENTS.length).map(e => e.tba ? `
+      <div class="event-card tba">
+        <span class="ec-date"><b>${e.big}</b><small>${e.small}</small></span>
+        <h3>${e.title}</h3>
+        <span class="ec-tba">Details soon</span>
+      </div>` : `
       <a class="event-card" href="events.html#${e.id}">
         <span class="ec-date"><b>${e.big}</b><small>${e.small}</small></span>
-        <span class="ec-kind">${e.kind}</span>
-        <h3>${e.title}</h3><p>${e.blurb}</p>
+        <h3>${e.title}</h3>
         <span class="ec-go">${e.id === 'ndd-week' ? 'Register interest' : 'RSVP'} <i aria-hidden="true">↗</i></span>
       </a>`).join('');
   });

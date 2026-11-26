@@ -1077,3 +1077,12 @@ a:hover .zoom { transform: scale(1.012); }
 .sq-note a { color: var(--clay-text); border-bottom: 1px solid currentColor; margin-left: 4px; }
 @media (max-width: 1024px) { .sq-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .sq-grid { grid-template-columns: 1fr 1fr; } .sq { min-height: 120px; } }
+.coming-soon { display: grid; gap: 18px; justify-items: start; max-width: 760px; padding: clamp(32px, 5vw, 64px); border: 1px solid var(--line); border-radius: 14px; background: #f8f5ef; }
+.coming-soon h2 { font-size: clamp(32px, 4vw, 52px); }
+.pp-soon { display: grid; gap: 12px; justify-items: start; align-content: center; padding: clamp(28px, 4vw, 48px); border: 1px dashed #cfc5b4; border-radius: 14px; background: #f8f5ef; min-height: 100%; }
+.pp-soon p:not(.eyebrow) { font-size: 18px; color: #3d3833; max-width: 40ch; }
+.event-card h3 { flex: 1; }
+.ec-tba { font-size: 14px; color: var(--muted); }
+.event-card.tba { border-style: dashed; background: transparent; }
+.event-card.tba:hover { box-shadow: none; border-color: var(--line); }
+.event-card.tba .ec-date b { color: var(--muted); }

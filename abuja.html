@@ -60,13 +60,13 @@
       <p class="eyebrow">NDD Abuja · Our first location</p>
       <h1>Abuja</h1>
       <p class="hero-xl-lede">A planned capital with room to experiment. Abuja's wide avenues, modernist civic buildings and fast-growing neighbourhoods make it one of the most interesting places in Nigeria to build and design right now. Lagos has its design week; Abuja has had no equivalent. NDD Abuja is the first district under the Nigeria Design District umbrella.</p>
-      <div class="cta-row"><a class="btn light" href="#studios">Meet the members</a><a class="btn on-dark" href="#walk">Take the design walk</a></div>
+      <div class="cta-row"><a class="btn light" href="list.html">Register interest</a><a class="btn on-dark" href="#walk">Take the design walk</a></div>
     </div>
   </section>
 
   <div class="wrap">
     <div class="stat-strip stat-3">
-      <div><b id="s-studios">–</b><span>Sample members</span></div>
+      <div><b>Q1 '27</b><span>Founding members announced</span></div>
       <div><b id="s-areas">–</b><span>Neighbourhoods</span></div>
       <div><b>6</b><span>Pillars</span></div>
     </div>
@@ -76,7 +76,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>By <em>neighbourhood</em></h2>
-        <span class="eyebrow">Tap one to filter the studios below</span>
+        <span class="eyebrow">Where NDD Abuja is growing</span>
       </div>
       <ul class="hood-list" id="hoods"></ul>
     </div>
@@ -84,14 +84,13 @@
 
   <section class="section" id="studios" style="padding-top:0">
     <div class="wrap">
-      <div class="section-head">
-        <h2>NDD Abuja <em>members</em></h2>
-        <a href="directory.html">Open in directory →</a>
+      <div class="section-head"><h2>NDD Abuja <em>members</em></h2></div>
+      <div class="coming-soon">
+        <p class="eyebrow clay">Coming soon</p>
+        <h2>Founding members are announced in <em>Q1 2027</em>.</h2>
+        <p class="lede">NDD Abuja's first members will be listed here by neighbourhood and pillar. Practising in Abuja? Register your interest now.</p>
+        <div class="cta-row"><a class="btn solid" href="list.html">Register interest</a><a class="btn " href="membership.html">See membership tiers</a></div>
       </div>
-      <div class="filters" id="cats" role="group" aria-label="Filter by pillar" style="padding-top:0"></div>
-      <p class="sample-note" style="margin-bottom:16px"><b>Preview:</b> these are sample listings. NDD's founding members will be announced in Q1 2027.</p>
-      <div class="dir-count"><span id="count"></span><button id="reset" hidden>Show all Abuja studios</button></div>
-      <div class="studio-grid" id="results" aria-live="polite"></div>
     </div>
   </section>
 
@@ -153,55 +152,21 @@
 
 <script src="site.js"></script>
 
-<script src="studios.js"></script>
 <script>
-
-  const $ = id => document.getElementById(id);
-  const ABUJA = DD.STUDIOS.filter(s => s.city === 'Abuja');
-  const state = { area: 'all', cat: 'all' };
-
-  // Neighbourhoods: listed in this order, counts come from the studio data.
   const HOODS = [
     ['Maitama', 'Embassies, Millennium Park'], ['Asokoro', 'Hillside homes'], ['Wuse II', 'Studios & cafés'],
     ['Wuse', 'Markets & workshops'], ['Garki', 'The original district'], ['Central Area', 'Civic core'],
     ['Jabi', 'The lake'], ['Utako', 'Makers & joinery'], ['Katampe', 'New hillside builds'],
     ['Gwarinpa', 'Family housing'], ['Life Camp', 'Ceramics & craft'], ['Kubwa', 'Growing north'], ['Bwari', 'Ushafa potters']
   ];
-  const count = a => ABUJA.filter(s => s.area === a).length;
-  $('hoods').innerHTML = HOODS.map(([a, d], i) => `
-    <li><button data-area="${a}" aria-pressed="false" ${count(a) ? '' : 'disabled'}>
+  document.getElementById('hoods').innerHTML = HOODS.map(([a, d], i) => `
+    <li><button disabled>
       <span class="n">${String(i + 1).padStart(2, '0')}</span>
       <span class="hood-name">${a}</span>
       <span class="hood-desc">${d}</span>
-      <span class="hood-count">${count(a) ? count(a) + (count(a) === 1 ? ' studio' : ' studios') : 'Coming soon'}</span>
+      <span class="hood-count">Members soon</span>
     </button></li>`).join('');
-  $('s-studios').textContent = ABUJA.length;
-  $('s-areas').textContent = HOODS.length;
-
-  const cats = ['all', ...Object.keys(DD.CATS).filter(k => ABUJA.some(s => s.cat === k))];
-  $('cats').innerHTML = cats.map(k => `<button data-cat="${k}" aria-pressed="false">${k === 'all' ? 'All' : DD.CATS[k]} <span>${k === 'all' ? ABUJA.length : ABUJA.filter(s => s.cat === k).length}</span></button>`).join('');
-
-  function render() {
-    document.querySelectorAll('#hoods button').forEach(b => b.setAttribute('aria-pressed', b.dataset.area === state.area));
-    document.querySelectorAll('#cats button').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === state.cat));
-    const list = ABUJA.filter(s => (state.area === 'all' || s.area === state.area) && (state.cat === 'all' || s.cat === state.cat))
-      .sort((a, b) => DD.rank(b) - DD.rank(a));
-    $('results').innerHTML = list.map(DD.card).join('') || '<p class="dir-empty">No studios here yet. <a href="#" class="linkish" onclick="event.preventDefault();reset()">Show all Abuja studios</a></p>';
-    const where = state.area === 'all' ? 'in Abuja' : 'in ' + state.area;
-    $('count').textContent = `${list.length} ${list.length === 1 ? 'studio' : 'studios'} ${where}`;
-    $('reset').hidden = state.area === 'all' && state.cat === 'all';
-  }
-  function reset() { state.area = 'all'; state.cat = 'all'; render(); }
-
-  $('hoods').addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    state.area = state.area === b.dataset.area ? 'all' : b.dataset.area;
-    render();
-    $('studios').scrollIntoView({ behavior: 'smooth' });
-  });
-  $('cats').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { state.cat = b.dataset.cat; render(); } });
-  $('reset').addEventListener('click', reset);
-  render();
+  document.getElementById('s-areas').textContent = HOODS.length;
 </script>
 </body>
 </html>

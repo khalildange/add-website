@@ -63,31 +63,18 @@
     </div>
   </section>
 
-  <div class="wrap">
-    <div class="dir-tools">
-      <label class="search">
-        <span class="sr-only">Search studios</span>
-        <input id="q" type="search" placeholder="Search studios, materials, cities…" autocomplete="off">
-      </label>
-      <label class="select">
-        <span class="sr-only">Neighbourhood</span>
-        <select id="area"><option value="all">All neighbourhoods</option></select>
-      </label>
+  <section class="section">
+    <div class="wrap">
+      <div class="coming-soon">
+        <p class="eyebrow clay">Coming soon</p>
+        <h2>Founding members will be listed <em>here</em>.</h2>
+        <p class="lede">NDD's founding members will be announced in Q1 2027. Once they join, you'll be able to search them by pillar and neighbourhood and contact them directly.</p>
+        <div class="cta-row"><a class="btn solid" href="list.html">Register interest</a><a class="btn " href="membership.html">See membership tiers</a></div>
+      </div>
     </div>
-    <div class="filters" id="cats" role="group" aria-label="Filter by pillar"></div>
-    <p class="sample-note"><b>Preview:</b> these are sample listings. NDD's founding members will be announced in Q1 2027.</p>
+  </section>
 
-    <div class="dir-count"><span id="count"></span><button id="reset" hidden>Clear filters</button></div>
-
-    <h2 class="sr-only">Members</h2>
-    <div class="studio-grid" id="results" aria-live="polite"></div>
-    <div class="dir-empty" id="empty" hidden>
-      <h3>No studios match that search.</h3>
-      <p>Try another neighbourhood or pillar, or <button class="linkish" id="reset2">clear all filters</button>.</p>
-    </div>
-  </div>
-
-  <section class="section newsletter curve-top" id="list" style="margin-top:96px">
+  <section class="section newsletter curve-top" id="list">
     <div class="wrap">
       <div>
         <p class="eyebrow" style="color:inherit">Founding membership</p>
@@ -119,64 +106,5 @@
 
 <script src="site.js"></script>
 
-<script src="studios.js"></script>
-<script>
-
-  const { CATS, STUDIOS } = DD;
-
-  const $ = id => document.getElementById(id);
-  const params = new URLSearchParams(location.search);
-  const state = {
-    q: params.get('q') || '',
-    cat: CATS[params.get('cat')] ? params.get('cat') : 'all',
-    area: params.get('area') || 'all'
-  };
-
-  // Neighbourhood options from the data
-  [...new Set(STUDIOS.map(x => x.area))].sort().forEach(a => $('area').insertAdjacentHTML('beforeend', `<option>${DD.esc(a)}</option>`));
-  if (state.area !== 'all' && ![...$('area').options].some(o => o.value === state.area)) state.area = 'all';
-
-  // Pillar chips with counts
-  const catKeys = ['all', ...Object.keys(CATS)];
-  $('cats').innerHTML = catKeys.map(k => {
-    const c = k === 'all' ? STUDIOS.length : STUDIOS.filter(s => s.cat === k).length;
-    return `<button data-cat="${k}" aria-pressed="false">${k === 'all' ? 'All' : CATS[k]} <span>${c}</span></button>`;
-  }).join('');
-
-  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-
-  function render() {
-    $('q').value = state.q;
-    $('area').value = state.area;
-    document.querySelectorAll('#cats button').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === state.cat));
-
-    const q = norm(state.q.trim());
-    const list = STUDIOS.filter(s =>
-      (state.cat === 'all' || s.cat === state.cat) &&
-      (state.area === 'all' || s.area === state.area) &&
-      (!q || norm([s.name, s.city, s.area, s.blurb, CATS[s.cat], s.discipline || '', ...s.tags].join(' ')).includes(q))
-    ).sort((a, b) => DD.rank(b) - DD.rank(a));
-
-    $('results').innerHTML = list.map(DD.card).join('');
-
-    $('count').textContent = `${list.length} ${list.length === 1 ? 'studio' : 'studios'}`;
-    $('empty').hidden = list.length > 0;
-    $('reset').hidden = !(state.q || state.cat !== 'all' || state.area !== 'all');
-
-    const p = new URLSearchParams();
-    if (state.q) p.set('q', state.q);
-    if (state.cat !== 'all') p.set('cat', state.cat);
-    if (state.area !== 'all') p.set('area', state.area);
-    history.replaceState(null, '', p.toString() ? '?' + p : location.pathname);
-  }
-
-  $('q').addEventListener('input', e => { state.q = e.target.value; render(); });
-  $('area').addEventListener('change', e => { state.area = e.target.value; render(); });
-  $('cats').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { state.cat = b.dataset.cat; render(); } });
-  const reset = () => { Object.assign(state, { q: '', cat: 'all', area: 'all' }); render(); };
-  $('reset').addEventListener('click', reset);
-  $('reset2').addEventListener('click', reset);
-  render();
-</script>
 </body>
 </html>

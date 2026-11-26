@@ -1086,3 +1086,55 @@ a:hover .zoom { transform: scale(1.012); }
 .event-card.tba { border-style: dashed; background: transparent; }
 .event-card.tba:hover { box-shadow: none; border-color: var(--line); }
 .event-card.tba .ec-date b { color: var(--muted); }
+
+/* ==========================================================================
+   NIGERIAN GREEN (Nov 2026)
+   Green becomes the main brand colour alongside terracotta: deep green bands
+   and footer, green buttons, labels and highlights, soft green tints.
+   All text pairs checked for WCAG AA.
+   ========================================================================== */
+:root {
+  --ng: #0f6b45;        /* Nigerian green: buttons, labels (5.8:1 on linen) */
+  --ng-deep: #154d34;   /* deep green: bands and footer (9.8:1 with white) */
+  --ng-tint: #e6eee8;   /* soft green surface */
+  --on-green: #f0c9a8;  /* warm highlight on green (6.4:1) */
+  --on-green-muted: #b8cdbf;
+}
+::selection { background: #cfe2d5; }
+
+/* Bands */
+.districts, .member-band, .topbar, .tier-patron, .badge.patron { background: var(--ng-deep); border-color: var(--ng-deep); }
+.districts h2 em, .member-band h2 em, .tier-patron h3 em { color: var(--on-green); }
+.districts .stages li.now .stage-when, .districts .steps span, .on-dark-steps span, .tier-patron li::before { color: var(--on-green); }
+.districts .lede, .on-dark-lede, .districts .stages p { color: #d6e2da; }
+.districts .stages li { border-color: rgba(255,255,255,.22); }
+.happening, .page-head { background: var(--ng-tint); }
+.sq.first { background: var(--ng-deep); border-color: var(--ng-deep); }
+.sq.first .sq-when b { color: var(--on-green); }
+.sq.first .sq-when, .sq.first.tba .sq-sector { color: var(--on-green-muted); }
+
+/* Hero overlays lean green */
+.hero-xl::before { background: linear-gradient(180deg, rgba(10,38,26,.06) 20%, rgba(10,38,26,.66) 100%), linear-gradient(90deg, rgba(10,38,26,.6), rgba(10,38,26,.12) 72%); }
+
+/* Buttons and controls */
+.btn.solid { background: var(--ng); border-color: var(--ng); color: #fff; }
+.btn.solid:hover { background: var(--ng-deep); border-color: var(--ng-deep); }
+.btn:not(.solid):not(.light):not(.on-dark):not(.wa):not(.ghost):hover { background: var(--ng); border-color: var(--ng); color: #fff; }
+.filters button[aria-pressed="true"], .pillar-tabs button[aria-selected="true"] { background: var(--ng); border-color: var(--ng); color: #fff; }
+.pillar-tabs button:hover, .sq-rotation a:hover { border-color: var(--ng); }
+.nav-link[aria-current], .nav-group.is-current > .nav-trigger, .nav-menu a[aria-current] b { color: var(--ng); }
+:focus-visible { outline-color: var(--ng); }
+
+/* Labels and highlights */
+.eyebrow.clay, .pp-intro .n, .offer-list .n, .coming-soon .eyebrow, .pp-soon .eyebrow { color: var(--ng); }
+.ec-date b, .sq-when b { color: var(--ng); }
+.ec-go, .offer-list a:hover .more, .sq-note a { color: var(--ng); }
+.event-card:hover, .event-card:focus-visible { border-color: var(--ng); }
+.sample-note, .draft-note { border-left-color: var(--ng); }
+.marquee i { color: var(--ng); }
+.st-go { border-color: rgba(255,255,255,.8); }
+.start-tile:hover .st-go, .start-tile:focus-visible .st-go { color: var(--ng-deep); }
+.pp-soon, .coming-soon { border-color: #bcd3c4; }
+.coming-soon { background: #f3f7f4; }
+
+.newsletter h2 em { color: var(--on-green); }

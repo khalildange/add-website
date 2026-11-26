@@ -20,7 +20,7 @@ window.DD = {
   },
   // Membership tiers. Only patron and maker show a badge on cards.
   TIERS: { patron: 'Founding Patron', studio: 'Studio Member', maker: 'Maker' },
-  CITIES: ['Abuja', 'Lagos', 'Kano', 'Kaduna'],
+  CITIES: ['Abuja', 'Kano', 'Kaduna'],
   // Founding members are announced in Q1 2027. Until then the list is empty and pages show "coming soon".
   STUDIOS: [
     // Add founding members here, e.g.

@@ -6,11 +6,11 @@
   --line: #d4cbbb;
   --clay: #b5532c;
   --indigo: #24345f;
-  --palm: #1f5b45;
+  --palm: #3d5687;
   --ochre: #c9962f;
   --display: "Archivo", "Inter Tight", system-ui, sans-serif; /* headlines: confident sans (founding plan, brand direction) */
-  --green: #22503d;
-  --green-2: #2d6650;
+  --green: #22305e;
+  --green-2: #2f4078;
   --sand: #e4d6bd;
   --charcoal: #2a2724;
   --sans: "Inter Tight", system-ui, sans-serif;
@@ -790,7 +790,7 @@ html.menu-open header.site { backdrop-filter: none; -webkit-backdrop-filter: non
   --ochre: #c8a15a;
   --sand: #e7dcc9;
   --indigo: #2f3a57;
-  --palm: #4a6352;
+  --palm: #3d5687;
   --display: "Instrument Sans", "Inter Tight", system-ui, sans-serif;
   --radius: 4px;
 }
@@ -1088,25 +1088,25 @@ a:hover .zoom { transform: scale(1.012); }
 .event-card.tba .ec-date b { color: var(--muted); }
 
 /* ==========================================================================
-   NIGERIAN GREEN (Nov 2026)
+   BRAND PALETTE (indigo-led, from the brand direction guide, Nov 2026; was Nigerian green)
    Green becomes the main brand colour alongside terracotta: deep green bands
    and footer, green buttons, labels and highlights, soft green tints.
    All text pairs checked for WCAG AA.
    ========================================================================== */
 :root {
-  --ng: #0f6b45;        /* Nigerian green: buttons, labels (5.8:1 on linen) */
-  --ng-deep: #154d34;   /* deep green: bands and footer (9.8:1 with white) */
-  --ng-tint: #e6eee8;   /* soft green surface */
+  --ng: #22305e;        /* Nigerian green: buttons, labels (5.8:1 on linen) */
+  --ng-deep: #1b274d;   /* deep green: bands and footer (9.8:1 with white) */
+  --ng-tint: #e9ebf2;   /* soft green surface */
   --on-green: #f0c9a8;  /* warm highlight on green (6.4:1) */
-  --on-green-muted: #b8cdbf;
+  --on-green-muted: #b9c3da;
 }
-::selection { background: #cfe2d5; }
+::selection { background: #d3d9e8; }
 
 /* Bands */
 .districts, .member-band, .topbar, .tier-patron, .badge.patron { background: var(--ng-deep); border-color: var(--ng-deep); }
 .districts h2 em, .member-band h2 em, .tier-patron h3 em { color: var(--on-green); }
 .districts .stages li.now .stage-when, .districts .steps span, .on-dark-steps span, .tier-patron li::before { color: var(--on-green); }
-.districts .lede, .on-dark-lede, .districts .stages p { color: #d6e2da; }
+.districts .lede, .on-dark-lede, .districts .stages p { color: #d5dbe9; }
 .districts .stages li { border-color: rgba(255,255,255,.22); }
 .happening, .page-head { background: var(--ng-tint); }
 .sq.first { background: var(--ng-deep); border-color: var(--ng-deep); }
@@ -1114,7 +1114,7 @@ a:hover .zoom { transform: scale(1.012); }
 .sq.first .sq-when, .sq.first.tba .sq-sector { color: var(--on-green-muted); }
 
 /* Hero overlays lean green */
-.hero-xl::before { background: linear-gradient(180deg, rgba(10,38,26,.06) 20%, rgba(10,38,26,.66) 100%), linear-gradient(90deg, rgba(10,38,26,.6), rgba(10,38,26,.12) 72%); }
+.hero-xl::before { background: linear-gradient(180deg, rgba(14,20,44,.06) 20%, rgba(14,20,44,.66) 100%), linear-gradient(90deg, rgba(14,20,44,.6), rgba(14,20,44,.12) 72%); }
 
 /* Buttons and controls */
 .btn.solid { background: var(--ng); border-color: var(--ng); color: #fff; }
@@ -1134,8 +1134,8 @@ a:hover .zoom { transform: scale(1.012); }
 .marquee i { color: var(--ng); }
 .st-go { border-color: rgba(255,255,255,.8); }
 .start-tile:hover .st-go, .start-tile:focus-visible .st-go { color: var(--ng-deep); }
-.pp-soon, .coming-soon { border-color: #bcd3c4; }
-.coming-soon { background: #f3f7f4; }
+.pp-soon, .coming-soon { border-color: #c3cadc; }
+.coming-soon { background: #f3f4f8; }
 
 .newsletter h2 em { color: var(--on-green); }
 
@@ -1145,10 +1145,10 @@ a:hover .zoom { transform: scale(1.012); }
 .fit-intro h2 { font-size: clamp(30px, 3.4vw, 46px); margin: 8px 0 10px; }
 .fit-intro p:last-child { color: #3d3833; }
 .fit-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
-.fit-choices button { font: inherit; font-size: 16px; text-align: left; color: var(--ink); background: #f8f5ef; border: 1px solid #bcd3c4; border-radius: 12px; padding: 16px 18px; cursor: pointer; transition: border-color .2s, background .2s, color .2s; }
+.fit-choices button { font: inherit; font-size: 16px; text-align: left; color: var(--ink); background: #f8f5ef; border: 1px solid #c3cadc; border-radius: 12px; padding: 16px 18px; cursor: pointer; transition: border-color .2s, background .2s, color .2s; }
 .fit-choices button:hover { border-color: var(--ng); }
 .fit-choices button[aria-pressed="true"] { background: var(--ng); border-color: var(--ng); color: #fff; }
-.fit-result { grid-column: 1 / -1; display: grid; gap: 8px; padding-top: 20px; border-top: 1px solid #bcd3c4; }
+.fit-result { grid-column: 1 / -1; display: grid; gap: 8px; padding-top: 20px; border-top: 1px solid #c3cadc; }
 .fit-result h3 { font-size: clamp(24px, 2.4vw, 32px); }
 .fit-result .cta-row { margin-top: 8px; }
 
@@ -1165,7 +1165,7 @@ a:hover .zoom { transform: scale(1.012); }
 /* ---------- Find us ---------- */
 .find-box { display: grid; grid-template-columns: 1fr 1.1fr; gap: var(--gutter); align-items: center; }
 .find-map { aspect-ratio: 4 / 3; position: relative; }
-.find-map .pin { position: absolute; left: 50%; top: 46%; width: 22px; height: 22px; border-radius: 50% 50% 50% 0; background: var(--ng); transform: translate(-50%, -50%) rotate(-45deg); box-shadow: 0 0 0 8px rgba(15,107,69,.18); }
+.find-map .pin { position: absolute; left: 50%; top: 46%; width: 22px; height: 22px; border-radius: 50% 50% 50% 0; background: var(--ng); transform: translate(-50%, -50%) rotate(-45deg); box-shadow: 0 0 0 8px rgba(34,48,94,.18); }
 .find-map .pin::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: #fff; }
 .find-copy { display: grid; gap: 14px; justify-items: start; }
 .find-copy h2 { font-size: clamp(32px, 4vw, 54px); }
@@ -1260,8 +1260,8 @@ footer.site { border-top: 1px solid var(--line); }
 .hero-xl-inner { padding-block: 88px clamp(36px, 4.5vw, 56px); gap: 18px; }
 .hero-slot { background:
   radial-gradient(110% 90% at 88% 0%, rgba(240,201,168,.22), transparent 55%),
-  radial-gradient(80% 90% at 0% 100%, rgba(15,107,69,.45), transparent 60%),
-  linear-gradient(160deg, #1e3a2c 0%, #15261d 65%, #101c16 100%); }
+  radial-gradient(80% 90% at 0% 100%, rgba(34,48,94,.45), transparent 60%),
+  linear-gradient(160deg, #26366a 0%, #1b274d 65%, #141d3a 100%); }
 .hero-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero-xl:has(.hero-slot img)::before { background: linear-gradient(180deg, rgba(16,14,12,.2) 0%, rgba(16,14,12,.72) 100%), linear-gradient(90deg, rgba(16,14,12,.5), transparent 75%); }
 .hero-credit { position: absolute; right: var(--gutter); bottom: 14px; font-size: 12px; color: rgba(255,255,255,.75); }
@@ -1338,3 +1338,30 @@ footer.site { border-top: 1px solid var(--line); }
 /* Hero: a touch tighter so the stat bar's border clears the fold on 1366x768 */
 .hero-xl { min-height: min(60vh, 600px); }
 .hero-xl-inner { padding-block: 72px clamp(32px, 4vw, 48px); }
+
+/* ---------- MOBILE FIXES ---------- */
+/* Keep the screen-reader text inside each pillar tab, so the swipe row can't widen the page */
+.pillar-tabs button { position: relative; }
+/* Grid children may shrink below their content width (stops a 3px overflow on 320px phones) */
+.contact-grid > *, .contact .wrap > * { min-width: 0; }
+@media (max-width: 960px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
+/* Bigger tap targets for checkboxes and small inline links on touch screens */
+@media (pointer: coarse) {
+  input[type="checkbox"] { width: 20px; height: 20px; flex: none; }
+  .topbar a { display: inline-block; padding: 6px 0; }
+}
+/* Forms: long select options can't push a form wider than the phone */
+.enquiry, .enquiry > * { min-width: 0; }
+.enquiry select, .enquiry input, .enquiry textarea { max-width: 100%; min-width: 0; }
+@media (max-width: 600px) { .enquiry { grid-template-columns: minmax(0, 1fr); } .step-bar { min-width: 0; } }
+
+/* ==========================================================================
+   BRAND PALETTE: Adire Indigo leads, Laterite Clay accents, Sahel Sand gives space
+   (brand direction guide, 23 Nov 2026). Variable names --ng* kept from the green era.
+   ========================================================================== */
+:root { --clay: #b5653a; --sand: #e8dcc6; --brass: #c49a45; --dye-blue: #5e7ba8; }
+/* WhatsApp button follows the brand: indigo outline, the small green dot still signals WhatsApp */
+.btn.wa { border-color: var(--ng); color: var(--ng); }
+.btn.wa:hover { background: var(--ng); border-color: var(--ng); color: #fff; }
+/* Small text under the logo needs the darker clay for contrast */
+header.site .logo .wordmark small, footer.site .logo .wordmark small { color: var(--clay-text); }

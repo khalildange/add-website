@@ -1318,3 +1318,23 @@ footer.site { border-top: 1px solid var(--line); }
 /* Footer without a Follow column */
 @media (min-width: 961px) { .foot-grid.no-follow { grid-template-columns: 2fr 1fr 1fr; } }
 @media (max-width: 960px) and (min-width: 601px) { .foot-grid.no-follow { grid-template-columns: repeat(2, 1fr); } }
+
+/* Join cards: rows line up across cards (eyebrow, title, text, link) */
+@supports (grid-template-rows: subgrid) {
+  .join-card { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; gap: 10px; }
+  .join-card p { align-self: start; }
+  .join-go { align-self: end; }
+}
+/* Quarter cards: sector line at the foot */
+.q-card h3 { margin-top: 6px; }
+.q-sector { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; border-top: 1px solid var(--line); padding-top: 12px; color: var(--muted); }
+.q-sector span { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--clay-text); }
+.q-sector.set { color: var(--ink); font-weight: 500; }
+
+.foot-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 960px) { .foot-about > .foot-actions { grid-column: 1; } }
+/* Pillar tabs wrap on wider screens so every pillar is visible; phones keep the swipe row */
+@media (min-width: 761px) { .pillar-tabs { flex-wrap: wrap; overflow: visible; } }
+/* Hero: a touch tighter so the stat bar's border clears the fold on 1366x768 */
+.hero-xl { min-height: min(60vh, 600px); }
+.hero-xl-inner { padding-block: 72px clamp(32px, 4vw, 48px); }

@@ -14,7 +14,7 @@ window.DD = {
     fashion: 'Fashion houses, modest fashion, accessories, scarves, textile designers and weavers',
     objects: 'Furniture makers, product designers, ceramicists, metalworkers and lighting makers',
     craft: 'Traditional artisans and craft guilds: dyers, brass and glass workers, leatherworkers and carvers',
-    art: 'Artists, galleries, curators, printmakers, fabricators and art advisors',
+    art: 'Painters, sculptors, mixed-media and textile artists; galleries, art spaces and curators; printmakers, fabricators and art foundries; and art advisors. The pillar connects artists with the architects and interior designers who commission and specify art for hotels, offices and homes. Collectors join as Friends of ADD.',
     media: 'Editorial, photography, film, branding and social media studios, and event producers'
   },
   // Membership tiers. Only patron and maker show a badge on cards.

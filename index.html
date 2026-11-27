@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<div class="topbar"><div class="wrap"><span>ADD · Founding membership opens January 2027</span><span>Kado, Abuja</span></div></div>
+<div class="topbar"><div class="wrap"><span>Founding membership opens January 2027 · <a href="list.html">Register interest now</a></span><span>Kado, Abuja</span></div></div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site">
@@ -56,12 +56,15 @@
 
 <main id="main">
   <section class="hero-xl">
-    <div class="hero-xl-media art p-adire" role="img" aria-label="Placeholder image: adire-inspired pattern"></div>
+    <!-- Hero photo slot. To add a photo, put it inside this div, e.g.
+         <img src="img/hero.jpg" alt="Describe the photo" width="2400" height="1350" fetchpriority="high">
+         and add a credit: <p class="hero-credit">Photo: Name</p> after the div. -->
+    <div class="hero-xl-media hero-slot"></div>
     <div class="hero-xl-inner wrap">
       <p class="eyebrow">Abuja Design District</p>
       <h1>Abuja's home for <em>Nigerian design.</em></h1>
       <p class="hero-xl-lede">Fashion, architecture, interiors, art and product design, showcased together. Collaboration supported. Creative businesses connected with opportunity.</p>
-      <div class="cta-row"><a class="btn on-dark" href="#start">Find your way in ↓</a></div>
+      <div class="cta-row"><a class="btn on-dark" href="#whos-in">Find your way in ↓</a></div>
     </div>
   </section>
 
@@ -74,20 +77,8 @@
     </div>
   </div>
 
-  <section class="section" id="start">
-    <div class="wrap">
-      <div class="section-head"><h2>Where would you like to <em>start?</em></h2></div>
-      <div class="start-grid">
-        <a class="start-tile t-big" href="directory.html"><div class="art p-concrete"></div><span class="st-kicker">Directory</span><span class="st-title">Find a member</span><span class="st-go" aria-hidden="true">→</span></a>
-        <a class="start-tile" href="projects.html"><div class="art p-laterite"></div><span class="st-kicker">Projects</span><span class="st-title">See the work</span><span class="st-go" aria-hidden="true">→</span></a>
-        <a class="start-tile" href="events.html"><div class="art p-indigo-dye"></div><span class="st-kicker">Events</span><span class="st-title">Come to an event</span><span class="st-go" aria-hidden="true">→</span></a>
-        <a class="start-tile" href="abuja.html"><div class="art p-sun"></div><span class="st-kicker">The District</span><span class="st-title">Explore Abuja</span><span class="st-go" aria-hidden="true">→</span></a>
-        <a class="start-tile" href="membership.html"><div class="art p-asooke"></div><span class="st-kicker">Membership</span><span class="st-title">Join ADD</span><span class="st-go" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
 
-  <section class="section" id="whos-in" style="padding-top:0">
+  <section class="section" id="whos-in">
     <div class="wrap">
       <div class="section-head"><h2>Who's in <em>ADD</em></h2><a href="directory.html">Member directory →</a></div>
       <div class="pillar-tabs" role="tablist" aria-label="Six pillars" id="pillar-tabs"></div>
@@ -99,20 +90,7 @@
     <div class="wrap">
       <div class="section-head"><h2>What's <em>coming up</em></h2><a href="events.html">Full calendar →</a></div>
       <p class="sq-note"><b>One sector per quarter.</b> Three or four times a year, ADD's calendar puts one sector in focus. <a href="events.html#sector-quarters">How the year works →</a></p>
-      <div class="event-cards" data-event-cards="4"></div>
-    </div>
-  </section>
-
-  <section class="section craft">
-    <div class="wrap feature">
-      <div class="frame"><div class="art wide p-indigo-dye" data-caption="Craft to contemporary"></div></div>
-      <div class="copy">
-        <p class="eyebrow clay">Craft to contemporary</p>
-        <h2>Where Nigeria's craft heritage meets contemporary <em>design</em>.</h2>
-        <p class="lede" style="font-size:18px">ADD connects northern and southern craft traditions with today's architects, interior designers and fashion houses, and always shows the maker alongside the designer.</p>
-        <ul class="tags craft-tags"><li>Adire</li><li>Kano dye pits</li><li>Bida brass &amp; glass</li><li>Aso Oke</li><li>Leatherwork</li><li>Woodcarving</li></ul>
-        <div><a class="btn" href="programmes.html#craft-exchange">About the Craft Exchange</a></div>
-      </div>
+      <div class="q-cards" id="q-cards"></div>
     </div>
   </section>
 
@@ -125,6 +103,19 @@
         <li><span class="stage-when">2027</span><h3>2. Pilot District</h3><p>ADD becomes a recognised cluster: a shared map and signage, a regular Open Studios trail, a pop-up showroom and the first ADD Week.</p></li>
         <li><span class="stage-when">2028 onward</span><h3>3. Anchor Hub</h3><p>A physical home for ADD, with a showroom, material library, co-working and event space.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="section join-band" id="join">
+    <div class="wrap">
+      <div class="section-head"><h2>Four ways to <em>join</em></h2><a href="membership.html">Compare the tiers →</a></div>
+      <p class="join-lede">Founding membership opens in January 2027. Register your interest now; it commits you to nothing, and we'll contact you with fees and dates before it opens.</p>
+      <div class="join-grid">
+        <a class="join-card join-patron" href="list.html?tier=patron"><span class="eyebrow">Limited to 8–12 in year one</span><h3>Founding Patron</h3><p>Established firms and brands that anchor ADD in its first year.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
+        <a class="join-card" href="list.html?tier=studio"><span class="eyebrow">For practising businesses</span><h3>Studio Member</h3><p>Practising firms, studios and brands across all six pillars.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
+        <a class="join-card" href="list.html?tier=maker"><span class="eyebrow">Subsidised</span><h3>Maker / Emerging</h3><p>Artisans, young designers, graduates and small makers.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
+        <a class="join-card" href="list.html?tier=friend"><span class="eyebrow">For everyone else</span><h3>Friend of ADD</h3><p>Clients, collectors, developers and design lovers.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
+      </div>
     </div>
   </section>
 
@@ -152,14 +143,22 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-about">
-        <p class="lede" style="font-size:18px">ADD brings together fashion, architecture, interiors, art and product design to showcase Nigerian creativity, support collaboration and connect creative businesses with opportunities.</p>
+        <a class="logo foot-logo" href="index.html" aria-label="ADD, Abuja Design District, home"><img src="img/logo-mark.svg" alt="" width="44" height="44"><span class="wordmark"><b>ADD</b><small>Abuja Design District</small></span></a>
+        <p class="lede foot-lede">ADD brings together fashion, architecture, interiors, art and product design to showcase Nigerian creativity, support collaboration and connect creative businesses with opportunities.</p>
+        <form class="foot-news" data-form data-subject="Newsletter signup" data-success="You're subscribed. Welcome to ADD.">
+          <p class="foot-h">The monthly letter</p>
+          <div class="fn-row"><label class="sr-only" for="fn-email">Email address</label><input id="fn-email" name="email" type="email" placeholder="Your email address" required autocomplete="email"><button type="submit">Subscribe →</button></div>
+          <label class="fn-consent"><input type="checkbox" name="consent" value="yes" required><span>Send me ADD news. I agree to the <a href="privacy.html">privacy policy</a>.</span></label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+          <p data-status role="status" class="form-status"></p>
+        </form>
         <a class="btn wa" data-wa data-wa-text="Hi ADD!">Chat on WhatsApp</a>
       </div>
       <div><h2 class="foot-h">Explore</h2><ul><li><a href="directory.html">Directory</a></li><li><a href="projects.html">Projects</a></li><li><a href="abuja.html">The District</a></li><li><a href="programmes.html">Programmes</a></li><li><a href="events.html">Events</a></li><li><a href="about.html">About</a></li></ul></div>
       <div><h2 class="foot-h">Get involved</h2><ul><li><a href="membership.html">Membership</a></li><li><a href="list.html">Register interest</a></li><li><a href="contact.html?topic=sponsor">Sponsorship &amp; partnerships</a></li><li><a href="contact.html">Contact</a></li></ul></div>
       <div><h2 class="foot-h">Follow</h2><ul><li><a data-social="instagram">Instagram</a></li><li><a data-social="linkedin">LinkedIn</a></li><li><a data-social="x">X</a></li><li><a data-social="tiktok">TikTok</a></li><li><a data-wa-channel>WhatsApp Channel</a></li></ul></div>
     </div>
-    <div class="foot-bottom"><span>© 2026 ADD · Abuja Design District · <a href="privacy.html">Privacy</a> · <a href="terms.html">Membership terms</a></span><span>Made in Abuja</span></div>
+    <div class="foot-bottom"><span>© 2026 ADD · Abuja Design District · <a href="privacy.html">Privacy</a> · <a href="terms.html">Membership terms</a></span><span>Made in Abuja · <a href="#top" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Back to top ↑</a></span></div>
   </div>
 </footer>
 
@@ -168,14 +167,31 @@
 <script src="studios.js"></script>
 <script>
   const art = { architecture: 'p-concrete', fashion: 'p-indigo-dye', objects: 'p-asooke', craft: 'p-palm', art: 'p-laterite', media: 'p-breeze' };
+  // Who each pillar is for (from DD.CAT_INFO), shown on pillars that have no members yet.
+  const who = {
+    architecture: ['Architecture firms', 'Interior designers', 'Landscape', 'Lighting', 'Finishing specialists'],
+    fashion: ['Fashion houses', 'Modest fashion', 'Accessories', 'Textile designers', 'Weavers'],
+    objects: ['Furniture makers', 'Product designers', 'Ceramicists', 'Metalworkers', 'Lighting makers'],
+    craft: ['Dyers', 'Brass & glass workers', 'Leatherworkers', 'Carvers', 'Craft guilds'],
+    art: ['Artists', 'Galleries', 'Curators', 'Printmakers', 'Art advisors'],
+    media: ['Editorial', 'Photography', 'Film', 'Branding', 'Social media studios', 'Event producers']
+  };
   const keys = Object.keys(DD.CATS);
   const tabs = document.getElementById('pillar-tabs'), panels = document.getElementById('pillar-panels');
-  tabs.innerHTML = keys.map((k, i) => `<button role="tab" id="tab-${k}" aria-controls="panel-${k}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${DD.CATS[k]}</button>`).join('');
+  const byCat = k => DD.STUDIOS.filter(s => s.cat === k).sort((a, b) => DD.rank(b) - DD.rank(a) || a.name.localeCompare(b.name));
+  tabs.innerHTML = keys.map((k, i) => { const n = byCat(k).length; return `<button type="button" role="tab" id="tab-${k}" aria-controls="panel-${k}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${DD.CATS[k]}<span class="pt-n">${n ? n : 'Open'}</span><span class="sr-only">${n ? (n === 1 ? ' member' : ' members') : ', founding places open'}</span></button>`; }).join('');
   panels.innerHTML = keys.map((k, i) => {
-    const members = DD.STUDIOS.filter(s => s.cat === k).sort((a, b) => DD.rank(b) - DD.rank(a) || a.name.localeCompare(b.name));
-    return `<div class="pillar-panel" role="tabpanel" id="panel-${k}" aria-labelledby="tab-${k}"${i ? ' hidden' : ''}>
-      <div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${i + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p></div>
-      ${members.length ? `<div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>` : `<div class="pp-soon"><p class="eyebrow clay">Coming soon</p><p>Founding ${DD.CATS[k]} members will be announced in Q1 2027.</p><a class="btn" href="list.html">Register interest</a></div>`}
+    const members = byCat(k);
+    return `<div class="pillar-panel" role="tabpanel" id="panel-${k}" aria-labelledby="tab-${k}" tabindex="0"${i ? ' hidden' : ''}>
+      <div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${i + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p>${members.length ? `<a class="btn" href="directory.html?cat=${k}">All ${DD.esc(DD.CATS[k])} members</a>` : ''}</div>
+      ${members.length ? `<div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>` : `<div class="pp-open">
+        <p class="eyebrow clay">Founding places open</p>
+        <p class="pp-open-title">Be one of the first ${DD.esc(DD.CATS[k])} members of ADD.</p>
+        <p>Founding members for this pillar will be announced in Q1 2027. Membership opens in January 2027, and registering interest now commits you to nothing.</p>
+        <p class="pp-who-h">Who it's for</p>
+        <ul class="tags">${who[k].map(t => `<li>${t}</li>`).join('')}</ul>
+        <div class="cta-row"><a class="btn solid" href="list.html">Register interest</a><a class="btn" href="#join">Ways to join</a></div>
+      </div>`}
     </div>`;
   }).join('');
   const btns = [...tabs.querySelectorAll('[role=tab]')];
@@ -185,10 +201,29 @@
   btns.forEach((b, i) => {
     b.addEventListener('click', () => select(b));
     b.addEventListener('keydown', e => {
-      const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (!d) return;
-      e.preventDefault(); const n = btns[(i + d + btns.length) % btns.length]; select(n); n.focus();
+      const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      const t = e.key === 'Home' ? 0 : e.key === 'End' ? btns.length - 1 : d ? (i + d + btns.length) % btns.length : -1;
+      if (t < 0) return;
+      e.preventDefault(); const n = btns[t]; select(n); n.focus();
     });
   });
+
+  // ---- What's coming up: one card per quarter, from SECTOR_QUARTERS in site.js ----
+  const months = { Q1: 'Jan – Mar', Q2: 'Apr – Jun', Q3: 'Jul – Sep', Q4: 'Oct – Dec' };
+  const notes = {
+    Q1: ['Founding members announced', 'First Salon, January 2027'],
+    Q2: ['Monthly Salon continues'],
+    Q3: ['Monthly Salon continues'],
+    Q4: ['First ADD Week, the flagship festival', 'Monthly Salon continues']
+  };
+  document.getElementById('q-cards').innerHTML = SECTOR_QUARTERS.map((x, i) => `
+    <a class="q-card${i === 0 ? ' q-now' : ''}" href="events.html#sector-quarters">
+      <span class="q-when"><b>${x.q}</b> ${x.year}<small>${months[x.q] || ''}</small></span>
+      <span class="q-label">Sector in focus</span>
+      <h3><span class="sr-only">${x.q} ${x.year}: </span>${x.sector ? SECTOR_NAMES[x.sector] : 'To be announced'}</h3>
+      <ul>${(notes[x.q] || []).map(n => `<li>${n}</li>`).join('')}</ul>
+      <span class="q-foot">Speakers and venues: details soon</span>
+    </a>`).join('');
 </script>
 </body>
 </html>

@@ -106,7 +106,13 @@ window.EVENTS = [
   $$('[data-social]').forEach(a => {
     const url = SITE.social[a.dataset.social];
     if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
-    else { a.removeAttribute('href'); a.classList.add('soon-link'); a.title = 'Coming soon'; }
+    else a.closest('li').hidden = true;
+  });
+  // Hide a list (e.g. the footer's Follow column) when none of its channels are live yet.
+  $$('footer.site .foot-grid > div:not(.foot-about)').forEach(col => {
+    if (col.querySelector('[data-social], [data-wa-channel]') && !col.querySelector('li:not([hidden]) a:not([hidden])')) {
+      col.hidden = true; col.closest('.foot-grid').classList.add('no-follow');
+    }
   });
 
   /* ---------- Form validation: clear, inline, friendly ---------- */

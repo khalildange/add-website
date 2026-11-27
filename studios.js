@@ -1,7 +1,7 @@
 // Studio listings shared by directory.html and abuja.html.
 // Sample data: replace with real studios (or load from a CMS / spreadsheet later).
 window.DD = {
-  // The six NDD pillars (from the founding plan). Directory, Abuja page and homepage all use these.
+  // The six ADD pillars (from the founding plan). Directory, Abuja page and homepage all use these.
   CATS: {
     architecture: 'Architecture & Interiors',
     fashion: 'Fashion & Textiles',
@@ -20,7 +20,7 @@ window.DD = {
   },
   // Membership tiers. Only patron and maker show a badge on cards.
   TIERS: { patron: 'Founding Patron', studio: 'Studio Member', maker: 'Maker' },
-  CITIES: ['Abuja', 'Kano', 'Kaduna'],
+  CITIES: ['Abuja'],
   // Founding members are announced in Q1 2027. Until then the list is empty and pages show "coming soon".
   STUDIOS: [
     // Add founding members here, e.g.

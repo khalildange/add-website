@@ -21,7 +21,7 @@ window.SITE = {
   social: { instagram: '', linkedin: '', x: '', tiktok: '' }
 };
 
-/* ---------- Events (events page, homepage and NDD Abuja page) ----------
+/* ---------- Events (events page, homepage and ADD page) ----------
    From the founding plan's road to Q1 2027. Exact dates and venues to be confirmed. */
 /* ---------- One sector per quarter ----------
    3 or 4 times a year (once a quarter) one sector (pillar) is in focus.
@@ -222,7 +222,7 @@ window.EVENTS = [
         // No form service yet: open the visitor's email app with the message filled in.
         const body = [...data.entries()].filter(([, v]) => typeof v === 'string' && v.trim())
           .map(([k, v]) => `${k.replace(/_/g, ' ')}: ${v}`).join('\n');
-        location.href = `mailto:${form.dataset.to || SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body + '\n\n(Sent via NDD, Nigeria Design District)')}`;
+        location.href = `mailto:${form.dataset.to || SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body + '\n\n(Sent via ADD, Abuja Design District)')}`;
         say('Your email app should open with your message ready to send.', true);
       }
     });

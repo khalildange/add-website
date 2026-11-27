@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://khalildange.github.io/ndd-website/sitemap.xml
+Sitemap: https://khalildange.github.io/add-website/sitemap.xml

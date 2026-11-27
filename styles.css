@@ -1365,3 +1365,103 @@ footer.site { border-top: 1px solid var(--line); }
 .btn.wa:hover { background: var(--ng); border-color: var(--ng); color: #fff; }
 /* Small text under the logo needs the darker clay for contrast */
 header.site .logo .wordmark small, footer.site .logo .wordmark small { color: var(--clay-text); }
+
+/* ==========================================================================
+   AESTHETIC PASS (Nov 2026)
+   Warmer, cleaner paper; indigo-charcoal text; soft surfaces and lines;
+   editorial serif italics for accents; brand-toned placeholders; quiet hovers.
+   ========================================================================== */
+:root {
+  --paper: #f6f1e8;      /* warm off-white page */
+  --paper-2: #efe7da;    /* sand-tinted alternate surface */
+  --surface: #fbf8f2;    /* cards */
+  --line: #e2d9cb;       /* hairlines */
+  --line-strong: #cfc3b0;
+  --ink: #1f2434;        /* indigo-charcoal text (14:1 on paper) */
+  --muted: #5e6272;      /* secondary text (5.6:1 on paper) */
+  --clay: #b5653a;
+  --clay-text: #9a4f2b;  /* small terracotta text (5.6:1 on paper) */
+  --ng-tint: #f0e9dd;    /* alternate sections: warm sand, not cool grey */
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); }
+::selection { background: #dfe3ee; color: var(--ink); }
+.lede, .fit-intro p:last-child, .faq-list details p { color: #3b4052; }
+.districts .lede, .on-dark-lede, .districts .stages p { color: #d3d9e8; }
+
+/* Type: editorial serif italic for the highlighted words in headlines */
+h1 em, h2 em, .hero-xl h1 em, .newsletter h2 em {
+  font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em;
+}
+h1, h2 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+h2 em { font-size: 1.06em; line-height: .9; }
+.hero-xl h1 em { display: inline; }
+.hero-xl h1 { max-width: 15ch; }
+.eyebrow { letter-spacing: .18em; }
+.section-head { border-bottom-color: var(--line); }
+
+/* Surfaces: one card language across the site */
+.event-card, .q-card, .join-card, .tier, .pp-open, .fit-box, .fit-choices button, .intent, .contact-info,
+.enquiry, .nav-menu { background: var(--surface); border-color: var(--line); }
+.event-card, .q-card, .join-card, .tier { border-radius: 14px; }
+.happening, .page-head, .fit-box { background: var(--ng-tint); }
+.contact, .contact-cta, .credits, .sample-note { background: var(--paper-2); }
+.pp-open { border-style: solid; }
+.tags li { background: rgba(255,255,255,.45); border-color: var(--line); }
+hr, .stat-strip, .stat-strip div + div, .foot-grid, .foot-bottom, .programme, .faq-list, .faq-list details { border-color: var(--line); }
+footer.site { background: var(--paper); border-top-color: var(--line); }
+
+/* Placeholder imagery in brand tones (indigo, clay, sand, dye-pit blue, brass) */
+.art { background-color: #d9cdb9; }
+.p-palm { background:
+  repeating-radial-gradient(circle at 110% 120%, transparent 0 24px, rgba(255,255,255,.07) 24px 25px),
+  linear-gradient(200deg, #5e7ba8, #3d5687); }
+.p-concrete { background:
+  linear-gradient(90deg, transparent 49.7%, rgba(31,36,52,.06) 50%, transparent 50.3%) 0 0/120px 100%,
+  linear-gradient(0deg, transparent 49.7%, rgba(31,36,52,.05) 50%, transparent 50.3%) 0 0/100% 80px,
+  linear-gradient(180deg, #e3d8c5, #cdbfa6); }
+.p-asooke { background:
+  linear-gradient(90deg, #22305e 0 14%, #b5653a 14% 16%, #22305e 16% 30%, #e8dcc6 30% 32%, #22305e 32% 47%,
+    #c49a45 47% 48.5%, #22305e 48.5% 62%, #5e7ba8 62% 66%, #22305e 66% 80%, #b5653a 80% 82%, #22305e 82%); }
+.p-sun { background:
+  radial-gradient(circle at 72% 34%, rgba(232,220,198,.9) 0 15%, transparent 15.4%),
+  linear-gradient(180deg, #c98a62, #b5653a 70%, #9a4f2b); }
+.p-laterite { background:
+  linear-gradient(to top, rgba(60,28,12,.18), transparent 55%),
+  repeating-linear-gradient(0deg, transparent 0 46px, rgba(0,0,0,.05) 46px 47px),
+  linear-gradient(140deg, #c27449, #9a4f2b); }
+.p-breeze { background:
+  radial-gradient(circle at 50% 50%, #f1e9dc 0 13px, transparent 14px) 0 0/46px 46px,
+  conic-gradient(from 45deg, #e6dccb 0 25%, #dccfb9 0 50%, #e6dccb 0 75%, #dccfb9 0) 0 0/46px 46px; }
+
+/* Inner-page heroes: the same clean indigo field as the homepage (no busy patterns behind text) */
+.hero-xl > .hero-xl-media.art { background:
+  radial-gradient(110% 90% at 88% 0%, rgba(232,220,198,.16), transparent 55%),
+  radial-gradient(80% 90% at 0% 100%, rgba(94,123,168,.28), transparent 60%),
+  linear-gradient(160deg, #26366a 0%, #1b274d 65%, #141d3a 100%); }
+.hero-xl > .hero-xl-media.art::after { display: none; }
+.hero-xl::before { background: linear-gradient(180deg, transparent 30%, rgba(14,20,44,.35) 100%); }
+.hero-xl:has(.hero-slot img)::before, .hero-xl:has(.hero-xl-media img)::before { background: linear-gradient(180deg, rgba(14,20,44,.2) 0%, rgba(14,20,44,.72) 100%), linear-gradient(90deg, rgba(14,20,44,.5), transparent 75%); }
+.hero-xl h1 em { color: #f0c9a8; }
+
+/* Hovers: quiet. No lifting, no zooming; a slightly firmer edge and a whisper of shadow */
+.event-card, .q-card, .join-card, .tier, .intent, .fit-choices button, .studio, .project-card, .programme, .start-tile {
+  transition: border-color .35s var(--ease), box-shadow .35s var(--ease), background-color .35s var(--ease); }
+.event-card:hover, .event-card:focus-visible, .q-card:hover, .q-card:focus-visible,
+.join-card:not(.join-patron):hover, .join-card:not(.join-patron):focus-visible, .tier:not(.tier-patron):hover {
+  border-color: var(--line-strong); box-shadow: 0 10px 28px -22px rgba(31,36,52,.28); transform: none; }
+.join-card.join-patron:hover, .join-card.join-patron:focus-visible, .tier-patron:hover { box-shadow: 0 10px 28px -20px rgba(14,20,44,.45); }
+.q-card.q-now { border-color: var(--line-strong); }
+.zoom, .pc-media .art, .pillar .art, .start-tile .art, .work-gallery img { transition: transform .8s var(--ease), filter .5s var(--ease); }
+a:hover .zoom, .pillar:hover .art, .start-tile:hover .art, .work-gallery a:hover img,
+.project-card:hover .pc-media .art, .project-card:focus-visible .pc-media .art { transform: none; filter: brightness(.97); }
+.pillar:hover h3, .project-card:hover h3, .card:not(.soon):hover h3 { color: inherit; }
+.studio h3 a:hover, .project-card:hover h3 { color: var(--clay-text); }
+.event-card:hover .ec-go i { transform: translate(1px, -1px); }
+.btn { transition: background-color .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease); }
+.tier.tier-patron { background: var(--ng-deep); border-color: var(--ng-deep); }
+.feature.feature-text { grid-template-columns: minmax(0, 1fr); }
+.feature.feature-text .copy { max-width: 860px; }

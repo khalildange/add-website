@@ -82,25 +82,26 @@
   } else {
     const d = DD.DETAILS[s.slug] || {};
     const cat = DD.CATS[s.cat];
-    const about = d.about || [s.blurb];
-    const services = d.services || s.tags;
+    const about = d.about || (s.blurb ? [s.blurb] : []);
+    const services = d.services || s.tags || [];
     const email = d.email || '';
     const waText = d.whatsapp ? `Hi ${s.name}, I found you on ADD and I'd like to ask about a project.` : `Hi ADD, I'd like to get in touch with ${s.name}.`;
-    document.title = `${s.name} · ${s.discipline || cat} in ${s.area}, ${s.city} · ADD Abuja Design District`;
-    document.querySelector('meta[name=description]').content = `${s.name}: ${s.blurb}`;
+    document.title = `${s.name} · ${s.discipline || cat} in ${DD.place(s)} · ADD Abuja Design District`;
+    document.querySelector('meta[name=description]').content = s.blurb ? `${s.name}: ${s.blurb}` : `${s.name}, ${cat} member of ADD in ${DD.place(s)}.`;
 
     const facts = [
       ['Pillar', cat],
       s.discipline && ['Discipline', s.discipline],
       s.tier && ['Membership', DD.TIERS[s.tier]],
-      ['Neighbourhood', `${s.area}, ${s.city}`],
+      ['Location', DD.place(s)],
       d.founded && ['Founded', d.founded],
       d.team && ['Team', d.team],
+      d.address && ['Address', d.address],
     ].filter(Boolean);
 
     const work = DD.PROJECTS.filter(x => x.studio === s || x.with.includes(s));
     const related = DD.STUDIOS.filter(x => x !== s && x.city === s.city)
-      .sort((a, b) => (b.cat === s.cat) - (a.cat === s.cat) || (b.area === s.area) - (a.area === s.area))
+      .sort((a, b) => (b.cat === s.cat) - (a.cat === s.cat) || (!!b.area && b.area === s.area) - (!!a.area && a.area === s.area))
       .slice(0, 3);
 
     const cityLink = s.city === 'Abuja' ? '<a href="abuja.html">Abuja</a>' : `<a href="directory.html?city=${encodeURIComponent(s.city)}">${e(s.city)}</a>`;
@@ -109,9 +110,9 @@
       <section class="article-head">
         <div class="wrap">
           <p class="crumbs"><a href="directory.html">Directory</a> / ${cityLink} / ${e(s.name)}</p>
-          <p class="eyebrow clay">${e(cat)} · ${e(s.area)}${s.tier && s.tier !== 'studio' ? ' · ' + DD.TIERS[s.tier] : ''}</p>
+          <p class="eyebrow clay">${e(cat)} · ${e(DD.place(s))}${s.tier && s.tier !== 'studio' ? ' · ' + DD.TIERS[s.tier] : ''}</p>
           <h1>${e(s.name)}</h1>
-          <p class="lede standfirst">${e(s.blurb)}</p>
+          ${s.blurb ? `<p class="lede standfirst">${e(s.blurb)}</p>` : ''}
           <div class="profile-actions">
             <a class="btn solid" href="#contact">Send an enquiry</a>
             <a class="btn wa" data-wa ${d.whatsapp ? `data-wa-number="${e(d.whatsapp)}"` : ''} data-wa-text="${e(waText)}">WhatsApp</a>
@@ -121,19 +122,31 @@
         </div>
       </section>
 
-      <div class="wrap"><div class="art wide ${s.art}" data-caption="${e(s.name)} · ${e(s.area)}, ${e(s.city)}"></div></div>
+      <div class="wrap">${DD.pic(s, 'wide')}</div>
 
       <div class="wrap article-body">
         <aside>
           <dl>${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${e(v)}</dd></div>`).join('')}</dl>
-          <div><dt class="eyebrow" style="font-size:11px">Services</dt>
-            <ul class="tags" style="margin-top:10px">${services.map(x => `<li>${e(x)}</li>`).join('')}</ul></div>
+          ${services.length ? `<div><dt class="eyebrow" style="font-size:11px">Services</dt>
+            <ul class="tags" style="margin-top:10px">${services.map(x => `<li>${e(x)}</li>`).join('')}</ul></div>` : ''}
         </aside>
         <div class="prose">
           <h2>About the studio</h2>
-          ${about.map(p => `<p>${e(p)}</p>`).join('')}
+          ${about.length ? about.map(p => `<p>${e(p)}</p>`).join('') : `<p>A fuller profile is coming soon. To get in touch with ${e(s.name)}, send an enquiry below and ADD will pass it on.</p>`}
         </div>
       </div>
+
+      ${(d.gallery || []).length ? `
+      <section class="section member-gallery" style="padding-top:0">
+        <div class="wrap">
+          <div class="section-head"><h2>Selected <em>work</em></h2>${d.instagram ? `<a href="https://instagram.com/${e(d.instagram)}" rel="noopener" target="_blank">More on Instagram ↗</a>` : ''}</div>
+          <div class="work-gallery${d.galleryShape === 'portrait' ? ' portrait' : ''}">${d.gallery.map(([src, cap, post]) => `
+            <figure>
+              <a href="${post ? 'https://www.instagram.com/p/' + e(post) + '/' : e(src)}" target="_blank" rel="noopener"><img src="${e(src)}" alt="${e(cap)} by ${e(s.name)}" loading="lazy"></a>
+              <figcaption>${e(cap)}</figcaption>
+            </figure>`).join('')}</div>
+        </div>
+      </section>` : ''}
 
       ${work.length ? `
       <section class="section" style="padding-top:0">

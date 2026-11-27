@@ -172,7 +172,7 @@
   const tabs = document.getElementById('pillar-tabs'), panels = document.getElementById('pillar-panels');
   tabs.innerHTML = keys.map((k, i) => `<button role="tab" id="tab-${k}" aria-controls="panel-${k}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${DD.CATS[k]}</button>`).join('');
   panels.innerHTML = keys.map((k, i) => {
-    const members = DD.STUDIOS.filter(s => s.cat === k).sort((a, b) => DD.rank(b) - DD.rank(a)).slice(0, 3);
+    const members = DD.STUDIOS.filter(s => s.cat === k).sort((a, b) => DD.rank(b) - DD.rank(a) || a.name.localeCompare(b.name));
     return `<div class="pillar-panel" role="tabpanel" id="panel-${k}" aria-labelledby="tab-${k}"${i ? ' hidden' : ''}>
       <div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${i + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p></div>
       ${members.length ? `<div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>` : `<div class="pp-soon"><p class="eyebrow clay">Coming soon</p><p>Founding ${DD.CATS[k]} members will be announced in Q1 2027.</p><a class="btn" href="list.html">Register interest</a></div>`}

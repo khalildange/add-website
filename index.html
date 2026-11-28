@@ -72,7 +72,6 @@
     </div>
   </section>
 
-
   <div class="ticker" aria-label="The six pillars of ADD"><div class="ticker-track"><span>Architecture &amp; Interiors</span><i aria-hidden="true">✦</i><span>Fashion &amp; Textiles</span><i aria-hidden="true">✦</i><span>Furniture &amp; Objects</span><i aria-hidden="true">✦</i><span>Craft &amp; Heritage</span><i aria-hidden="true">✦</i><span>Art &amp; Galleries</span><i aria-hidden="true">✦</i><span>Media &amp; Experience</span><i aria-hidden="true">✦</i><span aria-hidden="true">Architecture &amp; Interiors</span><i aria-hidden="true">✦</i><span aria-hidden="true">Fashion &amp; Textiles</span><i aria-hidden="true">✦</i><span aria-hidden="true">Furniture &amp; Objects</span><i aria-hidden="true">✦</i><span aria-hidden="true">Craft &amp; Heritage</span><i aria-hidden="true">✦</i><span aria-hidden="true">Art &amp; Galleries</span><i aria-hidden="true">✦</i><span aria-hidden="true">Media &amp; Experience</span><i aria-hidden="true">✦</i></div></div>
 
   <section class="section" id="whos-in">
@@ -100,9 +99,9 @@
           <span class="wi-by">By Ngogo</span>
         </a>
         <a class="work-item" href="studio.html?s=aw-clothiers">
-          <span class="wi-img"><img src="img/members/aw-clothiers/embroidered-gown.jpg" alt="Embroidered gown by AW Clothiers" loading="lazy"></span>
+          <span class="wi-img"><img src="img/members/aw-clothiers/runway-2.jpg" alt="AW Clothiers look on the runway" loading="lazy"></span>
           <span class="wi-meta"><b>03</b> Fashion &amp; embroidery</span>
-          <span class="wi-title">Embroidered gown</span>
+          <span class="wi-title">Runway look</span>
           <span class="wi-by">AW Clothiers</span>
         </a>
         <a class="work-item" href="studio.html?s=phantom-grey-dynamic-ltd">
@@ -233,7 +232,13 @@
   const tabs = document.getElementById('pillar-tabs'), panels = document.getElementById('pillar-panels');
   const sorted = list => list.sort((a, b) => DD.rank(b) - DD.rank(a) || a.name.localeCompare(b.name));
   // Featured: one member from each pillar that has members, in pillar order
-  const featured = () => Object.keys(DD.CATS).map(k => sorted(DD.STUDIOS.filter(s => s.cat === k))[0]).filter(Boolean);
+  // Featured: members with a logo or photos, one per pillar first, topped up to three
+  const featured = () => {
+    const withPic = DD.STUDIOS.filter(s => s.logo);
+    const picks = Object.keys(DD.CATS).map(k => sorted(withPic.filter(s => s.cat === k))[0]).filter(Boolean);
+    sorted([...withPic]).forEach(s => { if (picks.length < 3 && !picks.includes(s)) picks.push(s); });
+    return picks.slice(0, 3);
+  };
   const byCat = k => k === 'featured' ? featured() : sorted(DD.STUDIOS.filter(s => s.cat === k));
   const label = k => k === 'featured' ? 'Featured' : DD.CATS[k];
   tabs.innerHTML = keys.map((k, i) => { const n = byCat(k).length; return `<button type="button" role="tab" id="tab-${k}" aria-controls="panel-${k}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${label(k)} <span class="pt-n">${n ? n : 'Founding spots open'}</span>${n ? `<span class="sr-only">${n === 1 ? ' member' : ' members'}</span>` : ''}</button>`; }).join('');
@@ -241,7 +246,7 @@
     const members = byCat(k);
     return `<div class="pillar-panel" role="tabpanel" id="panel-${k}" aria-labelledby="tab-${k}" tabindex="0"${i ? ' hidden' : ''}>
       ${k === 'featured'
-        ? `<div class="pp-intro"><span class="n">Across the pillars</span><h3>One from each pillar</h3><p>A member from every pillar that has members so far, from architecture to fashion to art. Use the tabs to see everyone in a pillar.</p><a class="btn" href="directory.html">All members</a></div>`
+        ? `<div class="pp-intro"><span class="n">Across the pillars</span><h3>A first look</h3><p>A few of our members, from architecture and interiors to fashion. Use the tabs to see everyone in a pillar.</p><a class="btn" href="directory.html">All members</a></div>`
         : `<div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${Object.keys(DD.CATS).indexOf(k) + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p>${members.length ? `<a class="btn" href="directory.html?cat=${k}">All ${DD.esc(DD.CATS[k])} members</a>` : ''}</div>`}
       ${members.length ? `<div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>` : `<div class="pp-open">
         <p class="eyebrow clay">Founding places open</p>

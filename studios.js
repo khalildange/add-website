@@ -60,12 +60,13 @@ DD.DETAILS = {
     ] },
   'aw-clothiers': { founded: 2016, instagram: 'aw.clothiers', galleryShape: 'portrait',
     address: 'No 16, Joseph Waku Street, off First Avenue, Gwarinpa, Abuja',
+    // Garment and detail shots, plus two AI-generated runway images from their Instagram
     gallery: [
       ['img/members/aw-clothiers/runway.jpg', 'On the runway', 'DgIwaIuCEIn'],
-      ['img/members/aw-clothiers/embroidered-gown.jpg', 'Embroidered gown', 'DgIwd_MCGUy'],
-      ['img/members/aw-clothiers/embroidered-kaftan.jpg', 'Embroidered kaftan', 'DgIu4YviMAI'],
-      ['img/members/aw-clothiers/rose-applique.jpg', 'Rose appliqué', 'DgGDeyUol7I'],
-      ['img/members/aw-clothiers/ankara-fringe.jpg', 'Ankara with fringe trim', 'DgGUo0nCFho'],
+      ['img/members/aw-clothiers/runway-2.jpg', 'On the runway', 'DgIuvsbiI_b'],
+      ['img/members/aw-clothiers/embroidered-neckline.jpg', 'Embroidered neckline', 'DgIwq-Xoveq'],
+      ['img/members/aw-clothiers/lace-applique-sleeve.jpg', 'Lace appliqué sleeve', 'DgIvHgJIw3J'],
+      ['img/members/aw-clothiers/fringe-flower-embroidery.jpg', 'Fringed flower embroidery', 'Dfw6eveozul'],
       ['img/members/aw-clothiers/embroidery-detail.jpg', 'Embroidery detail', 'Df7hBNCBPNd'],
     ] },
   'by-ngogo': { instagram: 'by_ngogo',

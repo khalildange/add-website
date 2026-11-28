@@ -59,7 +59,11 @@
     <!-- Hero photo slot. To add a photo, put it inside this div, e.g.
          <img src="img/hero.jpg" alt="Describe the photo" width="2400" height="1350" fetchpriority="high">
          and add a credit: <p class="hero-credit">Photo: Name</p> after the div. -->
-    <div class="hero-xl-media hero-slot"><span class="hero-mark" aria-hidden="true">ADD</span></div>
+    <div class="hero-xl-media hero-slot hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero/abuja-aerial.jpg" aria-hidden="true">
+        <source src="img/hero/abuja-aerial.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="hero-xl-inner wrap">
       <p class="eyebrow">Abuja Design District</p>
       <h1>Abuja's home for <em>Nigerian design.</em></h1>
@@ -99,6 +103,24 @@
           <span class="wi-img"><img src="img/members/aw-clothiers/embroidered-gown.jpg" alt="Embroidered gown by AW Clothiers" loading="lazy"></span>
           <span class="wi-meta"><b>03</b> Fashion &amp; embroidery</span>
           <span class="wi-title">Embroidered gown</span>
+          <span class="wi-by">AW Clothiers</span>
+        </a>
+        <a class="work-item" href="studio.html?s=phantom-grey-dynamic-ltd">
+          <span class="wi-img"><img src="img/members/phantom-grey/meethaq-hotel.jpg" alt="Meethaq Hotel design image by Phantom Grey" loading="lazy"></span>
+          <span class="wi-meta"><b>04</b> Architecture</span>
+          <span class="wi-title">Meethaq Hotel</span>
+          <span class="wi-by">Phantom Grey Dynamic Ltd.</span>
+        </a>
+        <a class="work-item" href="studio.html?s=by-ngogo">
+          <span class="wi-img"><img src="img/members/by-ngogo/garden-retreat.jpg" alt="Garden retreat with rattan, wood and greenery by By Ngogo" loading="lazy"></span>
+          <span class="wi-meta"><b>05</b> Biophilic design</span>
+          <span class="wi-title">Garden retreat</span>
+          <span class="wi-by">By Ngogo</span>
+        </a>
+        <a class="work-item" href="studio.html?s=aw-clothiers">
+          <span class="wi-img"><img src="img/members/aw-clothiers/runway.jpg" alt="AW Clothiers look on the runway" loading="lazy"></span>
+          <span class="wi-meta"><b>06</b> Fashion</span>
+          <span class="wi-title">On the runway</span>
           <span class="wi-by">AW Clothiers</span>
         </a>
       </div>
@@ -236,10 +258,11 @@
     btns.forEach(x => { const on = x === b; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
   };
   // ---- Member cards rotate: a swipeable row with dots, arrows and a gentle auto-advance ----
-  document.querySelectorAll('.pp-members').forEach(t => makeSlider(t, 'member'));
+  // Member cards: an asymmetrical mosaic (sizes set in CSS by how many members a pillar has)
+  document.querySelectorAll('.pp-members').forEach(t => { t.classList.add('masonry'); t.dataset.n = Math.min(t.children.length, 6); });
 
   btns.forEach((b, i) => {
-    b.addEventListener('click', () => { select(b); const t = document.querySelector(`#${b.getAttribute('aria-controls')} .pp-members`); if (t) t.scrollLeft = 0; });
+    b.addEventListener('click', () => { select(b);  });
     b.addEventListener('keydown', e => {
       const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
       const t = e.key === 'Home' ? 0 : e.key === 'End' ? btns.length - 1 : d ? (i + d + btns.length) % btns.length : -1;

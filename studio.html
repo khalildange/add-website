@@ -97,6 +97,22 @@
     document.title = `${s.name} · ${s.discipline || cat} in ${DD.place(s)} · ADD Abuja Design District`;
     document.querySelector('meta[name=description]').content = s.blurb ? `${s.name}: ${s.blurb}` : `${s.name}, ${cat} member of ADD in ${DD.place(s)}.`;
 
+    // Schematic map of Abuja (not to scale). Pins the member's area if it's on file; ADD's base in Kado is always shown.
+    function abujaMap(m) {
+      const D = { gwarinpa: [70, 40, 'Gwarinpa'], kado: [92, 92, 'Kado'], 'life camp': [52, 112, 'Life Camp'], jabi: [104, 140, 'Jabi'], utako: [146, 128, 'Utako'],
+        wuse: [182, 104, 'Wuse'], maitama: [214, 62, 'Maitama'], 'central area': [212, 140, 'Central Area'], garki: [196, 184, 'Garki'], asokoro: [250, 166, 'Asokoro'] };
+      const key = (m.area || '').toLowerCase();
+      const pin = D[key];
+      const dots = Object.entries(D).map(([k, [x, y, name]]) => `<g class="am-d${k === key ? ' on' : ''}${k === 'kado' ? ' base' : ''}" tabindex="0" role="img" aria-label="${name}${k === key ? ': ' + e(m.name) : ''}${k === 'kado' ? ', ADD base' : ''}"><circle cx="${x}" cy="${y}" r="${k === key ? 7 : 4}"/><text x="${x + 9}" y="${y + 4}">${name}</text></g>`).join('');
+      return `<div class="abuja-map">
+        <p class="am-h">Where in Abuja</p>
+        <svg viewBox="0 0 300 220" aria-label="Schematic map of Abuja districts">
+          <path class="am-road" d="M20 70 C90 60 150 90 200 110 S280 150 295 170" /><path class="am-road" d="M60 20 C80 80 110 150 170 210" /><path class="am-road" d="M140 20 C170 70 200 120 230 210" />
+          ${dots}
+        </svg>
+        <p class="am-cap">${pin ? `<b>${e(m.name)}</b> · ${pin[2]}` : 'Exact location shared on request'}<span>ADD is based in Kado · schematic, not to scale</span></p>
+      </div>`;
+    }
     const facts = [
       ['Pillar', cat],
       s.discipline && ['Discipline', s.discipline],
@@ -135,6 +151,7 @@
       <div class="wrap article-body">
         <aside>
           <dl>${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${e(v)}</dd></div>`).join('')}</dl>
+          ${abujaMap(s)}
           ${services.length ? `<div><dt class="eyebrow" style="font-size:11px">Services</dt>
             <ul class="tags" style="margin-top:10px">${services.map(x => `<li>${e(x)}</li>`).join('')}</ul></div>` : ''}
         </aside>

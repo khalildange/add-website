@@ -304,6 +304,21 @@ window.EVENTS = [
     }, 5000);
   };
 
+  /* ---------- Hero video: a still frame for reduced motion; pause when off screen to save battery ---------- */
+  $$('.hero-video').forEach(v => {
+    if (reduceMotion) { v.autoplay = false; v.pause(); return; }
+    v.playbackRate = 0.8;
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) v.play().catch(() => {}); else v.pause(); })).observe(v);
+  });
+
+  /* ---------- Growth stages: draw the timeline and bring each stage in as it scrolls into view ---------- */
+  $$('.stages').forEach(ol => {
+    ol.classList.add('stages-anim');
+    if (reduceMotion || !('IntersectionObserver' in window)) { ol.classList.add('in-view'); return; }
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { ol.classList.add('in-view'); io.disconnect(); } }), { threshold: .25 });
+    io.observe(ol);
+  });
+
   /* ---------- Gentle reveal on scroll (skipped for reduced motion) ---------- */
   window.reveal = (root = document) => {
     if (reduceMotion || !('IntersectionObserver' in window)) return;

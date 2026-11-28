@@ -269,6 +269,41 @@ window.EVENTS = [
       <p class="sq-rotation"><span>In the rotation</span>${Object.entries(SECTOR_NAMES).map(([k, v]) => `<a class="${used.has(k) ? 'on' : ''}" href="directory.html?cat=${k}">${v}</a>`).join('')}</p>`;
   });
 
+  /* ---------- Sliders: a swipeable row with dots, arrows and a gentle auto-advance ---------- */
+  const stillMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.makeSlider = function (track, noun) {
+    const cards = [...track.children];
+    track.classList.add('slider');
+    track.setAttribute('tabindex', '0');
+    track.setAttribute('aria-label', `${noun[0].toUpperCase() + noun.slice(1)}s, swipe or use the arrows`);
+    if (cards.length < 2) return;
+    const nav = document.createElement('div');
+    nav.className = 'slider-nav';
+    nav.innerHTML = `<div class="slider-dots">${cards.map((_, i) => `<button type="button" aria-label="Show ${noun} ${i + 1} of ${cards.length}"></button>`).join('')}</div>
+      <div class="slider-arrows"><button type="button" class="prev" aria-label="Previous ${noun}">←</button><button type="button" class="next" aria-label="Next ${noun}">→</button></div>`;
+    track.after(nav);
+    const dots = [...nav.querySelectorAll('.slider-dots button')];
+    const at = () => { const x = track.scrollLeft; let best = 0; cards.forEach((c, i) => { if (Math.abs(c.offsetLeft - track.offsetLeft - x) < Math.abs(cards[best].offsetLeft - track.offsetLeft - x)) best = i; }); return best; };
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const go = i => { const n = (i + cards.length) % cards.length; track.scrollTo({ left: cards[n].offsetLeft - track.offsetLeft, behavior: stillMotion ? 'auto' : 'smooth' }); };
+    const mark = () => { const i = atEnd() ? cards.length - 1 : at(); dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false')); };
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    nav.querySelector('.prev').addEventListener('click', () => go(at() - 1));
+    nav.querySelector('.next').addEventListener('click', () => go(atEnd() ? 0 : at() + 1));
+    track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
+    mark();
+    // Auto-advance every 5s while visible; pause on hover, focus or touch
+    if (stillMotion) return;
+    let paused = false;
+    ['mouseenter', 'focusin', 'touchstart'].forEach(ev => track.parentElement.addEventListener(ev, () => { paused = true; }, { passive: true }));
+    ['mouseleave', 'focusout'].forEach(ev => track.parentElement.addEventListener(ev, () => { paused = false; }));
+    setInterval(() => {
+      if (paused || document.hidden || track.closest('[hidden]')) return;
+      const r = track.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+      go(atEnd() ? 0 : at() + 1);
+    }, 5000);
+  };
+
   /* ---------- Gentle reveal on scroll (skipped for reduced motion) ---------- */
   window.reveal = (root = document) => {
     if (reduceMotion || !('IntersectionObserver' in window)) return;

@@ -1538,3 +1538,13 @@ a:hover .zoom, .pillar:hover .art, .start-tile:hover .art, .work-gallery a:hover
 @media (max-width: 960px) { .q-cards.slider > .q-card { flex-basis: min(58%, 380px); } }
 @media (max-width: 600px) { .q-cards.slider > .q-card { flex-basis: 82%; } }
 .slider > * { position: relative; }
+
+/* ---------- Membership: Who can join as a slider ---------- */
+.pillars.slider { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+.pillars.slider::-webkit-scrollbar { display: none; }
+.pillars.slider > .pillar { flex: 0 0 min(31%, 420px); scroll-snap-align: start; }
+.pillars.slider:focus-visible { outline: 2px solid var(--clay); outline-offset: 6px; }
+@media (max-width: 960px) { .pillars.slider > .pillar { flex-basis: min(46%, 380px); } }
+@media (max-width: 600px) { .pillars.slider { gap: 16px; } .pillars.slider > .pillar { flex-basis: 82%; } }
+/* Cards inside sliders skip the scroll fade-in (they can sit off to the side, out of view) */
+.slider > .rv { opacity: 1 !important; transform: none !important; }

@@ -311,6 +311,39 @@ window.EVENTS = [
     if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) v.play().catch(() => {}); else v.pause(); })).observe(v);
   });
 
+  /* ---------- Motion: hero entrance, gentle parallax, reveals for headings and images ---------- */
+  document.documentElement.classList.add('js-motion');
+  if (!reduceMotion) {
+    // Hero: text rises in on load; the background drifts slower than the page as you scroll
+    const hero = document.querySelector('.hero-xl');
+    if (hero) {
+      requestAnimationFrame(() => hero.classList.add('hero-in'));
+      const media = hero.querySelector('.hero-xl-media');
+      if (media) {
+        let ticking = false;
+        const drift = () => { const y = Math.min(window.scrollY, hero.offsetHeight); media.style.transform = `translate3d(0, ${y * 0.2}px, 0)`; ticking = false; };
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });
+      }
+    }
+    // Section headings and images reveal as they come into view.
+    // Uses a simple position check on scroll, so nothing can be skipped or left hidden.
+    const targets = $$('.section-head, .wi-img, .work-gallery figure, .pp-intro, .founders-grid, .benefits li')
+      .filter(el => !el.closest('.slider, .work-strip'));
+    targets.forEach(el => el.classList.add('will-reveal'));
+    let pend = false;
+    const check = () => {
+      pend = false;
+      const lim = window.innerHeight * 0.92;
+      targets.forEach(el => { if (!el.classList.contains('seen') && el.getBoundingClientRect().top < lim) el.classList.add('seen'); });
+    };
+    const queue = () => { if (!pend) { pend = true; setTimeout(check, 60); } };
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    window.addEventListener('load', queue);
+    check();
+    setTimeout(check, 400);
+  }
+
   /* ---------- Growth stages: draw the timeline and bring each stage in as it scrolls into view ---------- */
   $$('.stages').forEach(ol => {
     ol.classList.add('stages-anim');

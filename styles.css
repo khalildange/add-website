@@ -1527,3 +1527,5 @@ a:hover .zoom, .pillar:hover .art, .start-tile:hover .art, .work-gallery a:hover
 .founders-copy p:not(.lede) { color: var(--muted); }
 @media (max-width: 760px) { .founders-grid { grid-template-columns: 1fr; gap: 16px; } }
 .why-join .benefits { margin-bottom: 0; }
+.behind-add { padding-top: clamp(56px, 7vw, 96px); padding-bottom: 0; }
+.behind-add .founders-grid { border-top: 0; padding-top: 0; }

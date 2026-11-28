@@ -55,15 +55,15 @@
   <section class="page-head"><div class="wrap"><h1>Privacy</h1><p class="lede">What we collect, why, and what you can ask us to do with it.</p></div></section>
   <div class="wrap legal">
     <p class="draft-note"><b>Draft:</b> this is a starting template, not legal advice. Have a Nigerian lawyer review it, and fill in the bracketed details, before launch.</p>
-    <p class="note">Last updated: [date]</p>
+    <p class="note">Last updated: November 2026</p>
     <h2>Who we are</h2>
-    <p>ADD, Abuja Design District ("we", "us"), runs this website. We are based in Abuja, Nigeria. You can contact us about privacy at <a class="linkish" data-email href="#">hello@example.com</a>. [Add registered business name and address.]</p>
+    <p>ADD, Abuja Design District ("we", "us"), runs this website. We are based in Abuja, Nigeria. You can contact us about privacy at <a class="linkish" data-email href="#">hello@example.com</a>. <!-- TO DO before launch: Add registered business name and address. --></p>
     <h2>What we collect</h2>
     <ul>
       <li><b>Newsletter:</b> your email address.</li>
       <li><b>Contact, enquiry and RSVP forms:</b> your name, email, phone number if you give it, and your message.</li>
       <li><b>Membership interest and membership:</b> business details, contact person's name, email and WhatsApp number, links to your work, and your answers about what you want from ADD (including, if you choose to share it, a rough marketing budget).</li>
-      <li><b>Site usage:</b> if we add analytics, anonymous information about pages visited. [Name the tool if you add one.]</li>
+      <li><b>Site usage:</b> if we add analytics, anonymous information about pages visited. <!-- TO DO before launch: Name the tool if you add one. --></li>
     </ul>
     <h2>Why we use it</h2>
     <ul>
@@ -74,9 +74,9 @@
     </ul>
     <p>We rely on your consent, or on our legitimate interest in running the service you asked us for, as allowed under the Nigeria Data Protection Act 2023. We never sell your data.</p>
     <h2>Who we share it with</h2>
-    <p>When you send an enquiry to a studio, we pass your message and contact details to that studio. We also use service providers to run the site, such as our form service, email newsletter tool and hosting provider. [List them.] Some may store data outside Nigeria; we only use providers with appropriate safeguards.</p>
+    <p>When you send an enquiry to a studio, we pass your message and contact details to that studio. We also use service providers to run the site, such as our form service, email newsletter tool and hosting provider. <!-- TO DO before launch: List them. --> Some may store data outside Nigeria; we only use providers with appropriate safeguards.</p>
     <h2>How long we keep it</h2>
-    <p>Newsletter emails until you unsubscribe. Messages and RSVPs for up to 24 months. Member listings for as long as the member stays listed, and 12 months after removal. [Adjust to your practice.]</p>
+    <p>Newsletter emails until you unsubscribe. Messages and RSVPs for up to 24 months. Member listings for as long as the member stays listed, and 12 months after removal. <!-- TO DO before launch: Adjust to your practice. --></p>
     <h2>Your rights</h2>
     <p>You can ask us for a copy of your data, to correct it, to delete it, or to stop using it. Email us and we'll respond within 30 days. If you're not happy with our response, you can complain to the Nigeria Data Protection Commission (NDPC).</p>
   </div>
@@ -107,6 +107,6 @@
 
 <script src="site.js"></script>
 
-<script>document.querySelectorAll('[data-email]').forEach(a => { a.href = 'mailto:' + SITE.email; a.textContent = SITE.email; });</script>
+<script>document.querySelectorAll('[data-email]').forEach(a => { if (SITE.email && !/example\.com$/.test(SITE.email)) { a.href = 'mailto:' + SITE.email; a.textContent = SITE.email; } else { a.href = 'contact.html'; a.textContent = 'our contact page'; } });</script>
 </body>
 </html>

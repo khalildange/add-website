@@ -132,7 +132,8 @@
 <script>
   const topic = new URLSearchParams(location.search).get('topic'), sel = document.getElementById('topic');
   if (topic && sel.querySelector(`option[value="${CSS.escape(topic)}"]`)) sel.value = topic;
-  document.querySelectorAll('[data-email]').forEach(a => { a.href = 'mailto:' + SITE.email; a.textContent = SITE.email; });
+  const realEmail = SITE.email && !/example\.com$/.test(SITE.email);
+  document.querySelectorAll('[data-email]').forEach(a => { if (realEmail) { a.href = 'mailto:' + SITE.email; a.textContent = SITE.email; } else a.closest('div').hidden = true; });
 </script>
 </body>
 </html>

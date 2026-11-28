@@ -88,7 +88,6 @@
   <section class="section happening" id="events">
     <div class="wrap">
       <div class="section-head"><h2>What's <em>coming up</em></h2><a href="events.html">Full calendar →</a></div>
-      <p class="sq-note"><b>One sector per quarter.</b> Three or four times a year, ADD's calendar puts one sector in focus. <a href="events.html#sector-quarters">How the year works →</a></p>
       <div class="q-cards" id="q-cards"></div>
     </div>
   </section>
@@ -102,19 +101,6 @@
         <li><span class="stage-when">2027</span><h3>2. Pilot District</h3><p>ADD becomes a recognised cluster: a shared map and signage, a regular Open Studios trail, a pop-up showroom and the first ADD Week.</p></li>
         <li><span class="stage-when">2028 onward</span><h3>3. Anchor Hub</h3><p>A physical home for ADD, with a showroom, material library, co-working and event space.</p></li>
       </ol>
-    </div>
-  </section>
-
-  <section class="section join-band" id="join">
-    <div class="wrap">
-      <div class="section-head"><h2>Four ways to <em>join</em></h2><a href="membership.html">Compare the tiers →</a></div>
-      <p class="join-lede">Founding Patron is for established firms and brands, limited to 8–12 places in year one. Studio Member and Maker / Emerging are for practising businesses and makers. Friend of ADD is for clients, collectors and design lovers. All four open in January 2027; register your interest now and we'll contact you with fees and dates. It commits you to nothing.</p>
-      <div class="join-grid">
-        <a class="join-card join-patron" href="list.html?tier=patron"><span class="eyebrow">Founding · limited to 8–12 in year one</span><h3>Founding Patron</h3><p>Established firms and brands that anchor ADD in its first year.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
-        <a class="join-card" href="list.html?tier=studio"><span class="eyebrow">Practising · for businesses</span><h3>Studio Member</h3><p>Practising firms, studios and brands across all six pillars.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
-        <a class="join-card" href="list.html?tier=maker"><span class="eyebrow">Practising · subsidised</span><h3>Maker / Emerging</h3><p>Artisans, young designers, graduates and small makers.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
-        <a class="join-card" href="list.html?tier=friend"><span class="eyebrow">Community · for everyone else</span><h3>Friend of ADD</h3><p>Clients, collectors, developers and design lovers.</p><span class="join-go">Register interest <span aria-hidden="true">→</span></span></a>
-      </div>
     </div>
   </section>
 
@@ -189,7 +175,7 @@
         <p>Founding members for this pillar will be announced in Q1 2027. Membership opens in January 2027, and registering interest now commits you to nothing.</p>
         <p class="pp-who-h">Who it's for</p>
         <ul class="tags">${who[k].map(t => `<li>${t}</li>`).join('')}</ul>
-        <div class="cta-row"><a class="btn solid" href="list.html">Register interest</a><a class="btn" href="#join">Ways to join</a></div>
+        <div class="cta-row"><a class="btn solid" href="list.html">Register interest</a><a class="btn" href="membership.html">Ways to join</a></div>
       </div>`}
     </div>`;
   }).join('');
@@ -197,8 +183,43 @@
   const select = b => {
     btns.forEach(x => { const on = x === b; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
   };
+  // ---- Member cards rotate: a swipeable row with dots, arrows and a gentle auto-advance ----
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.pp-members').forEach(track => {
+    const cards = [...track.children];
+    track.classList.add('slider');
+    track.setAttribute('tabindex', '0');
+    track.setAttribute('aria-label', 'Members, swipe or use the arrows');
+    if (cards.length < 2) return;
+    const nav = document.createElement('div');
+    nav.className = 'slider-nav';
+    nav.innerHTML = `<div class="slider-dots">${cards.map((_, i) => `<button type="button" aria-label="Show member ${i + 1} of ${cards.length}"></button>`).join('')}</div>
+      <div class="slider-arrows"><button type="button" class="prev" aria-label="Previous member">←</button><button type="button" class="next" aria-label="Next member">→</button></div>`;
+    track.after(nav);
+    const dots = [...nav.querySelectorAll('.slider-dots button')];
+    const at = () => { const x = track.scrollLeft; let best = 0; cards.forEach((c, i) => { if (Math.abs(c.offsetLeft - track.offsetLeft - x) < Math.abs(cards[best].offsetLeft - track.offsetLeft - x)) best = i; }); return best; };
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const go = i => { const n = (i + cards.length) % cards.length; track.scrollTo({ left: cards[n].offsetLeft - track.offsetLeft, behavior: still ? 'auto' : 'smooth' }); };
+    const mark = () => { const i = atEnd() ? cards.length - 1 : at(); dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false')); };
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+    nav.querySelector('.prev').addEventListener('click', () => go(at() - 1));
+    nav.querySelector('.next').addEventListener('click', () => go(atEnd() ? 0 : at() + 1));
+    track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
+    mark();
+    // Auto-advance every 5s while visible; pause on hover, focus or touch
+    if (still) return;
+    let paused = false;
+    ['mouseenter', 'focusin', 'touchstart'].forEach(ev => track.parentElement.addEventListener(ev, () => { paused = true; }, { passive: true }));
+    ['mouseleave', 'focusout'].forEach(ev => track.parentElement.addEventListener(ev, () => { paused = false; }));
+    setInterval(() => {
+      if (paused || document.hidden || track.closest('[hidden]')) return;
+      const r = track.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+      go(atEnd() ? 0 : at() + 1);
+    }, 5000);
+  });
+
   btns.forEach((b, i) => {
-    b.addEventListener('click', () => select(b));
+    b.addEventListener('click', () => { select(b); const t = document.querySelector(`#${b.getAttribute('aria-controls')} .pp-members`); if (t) t.scrollLeft = 0; });
     b.addEventListener('keydown', e => {
       const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
       const t = e.key === 'Home' ? 0 : e.key === 'End' ? btns.length - 1 : d ? (i + d + btns.length) % btns.length : -1;

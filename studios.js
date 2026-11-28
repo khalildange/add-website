@@ -31,6 +31,7 @@ window.DD = {
     // ---- Fashion & Textiles ----
     { name: 'House of Arya', cat: 'fashion', city: 'Abuja', art: 'p-indigo-dye', logo: 'img/members/house-of-arya.jpg', logoBg: '#000', blurb: 'Ready-to-wear, bespoke tailoring and made-to-measure clothing.', tags: ['Ready to wear', 'Bespoke tailoring', 'Made to measure'] },
     { name: 'AW Clothiers', cat: 'fashion', discipline: 'Embroidery & tailoring', city: 'Abuja', area: 'Gwarinpa', art: 'p-asooke', logo: 'img/members/aw-clothiers.jpg', logoBg: '#f7f4e5', blurb: 'High-end embroidered ready-to-wear, made in Nigeria. Experts in embroidery, sequin beading and tailoring.', tags: ['Embroidery', 'Sequin beading', 'Tailoring', 'Ready to wear'] },
+    { name: 'Shirohige', cat: 'fashion', discipline: 'Bespoke, ready-to-wear & couture', city: 'Abuja', area: 'Gwarinpa', art: 'p-indigo-dye', logo: 'img/members/shirohige.jpg', logoBg: '#ffffff', blurb: 'A Gwarinpa fashion house making bespoke, ready-to-wear and couture pieces for women.', tags: ['Bespoke', 'Ready to wear', 'Couture', 'Kaftans'] },
     // ---- Art & Galleries ----
     { name: 'Salim Arts', cat: 'art', city: 'Abuja', art: 'p-palm' },
   ]
@@ -41,6 +42,16 @@ window.DD = {
 DD.DETAILS = {
   // 'studio-slug': { founded: 2020, team: '5 people', about: ['…'], services: ['…'], email: '', instagram: '' },
   'house-of-arya': { instagram: 'houseof_arya' },
+  'shirohige': { instagram: 'shirohige_ng', galleryShape: 'portrait',
+    address: 'No. 6 Sunday Awoniyi Street, Gwarinpa, Abuja',
+    gallery: [
+      ['img/members/shirohige/embroidered-kaftan.jpg', 'Embroidered kaftan', 'Dfk4d1uv7Mg'],
+      ['img/members/shirohige/embellished-set.jpg', 'Embellished set', 'Dfk3AwwBrFw'],
+      ['img/members/shirohige/rust-gown.jpg', 'Rust gown', 'DgLPk9SIJWo'],
+      ['img/members/shirohige/lace-gown.jpg', 'Lace gown', 'DgLIzeoI_cE'],
+      ['img/members/shirohige/print-fitting.jpg', 'Print gown at a fitting', 'Dfk1fWABXvw'],
+      ['img/members/shirohige/print-dress.jpg', 'Print dress', 'DgPV6h-BJE7'],
+    ] },
   'phantom-grey-dynamic-ltd': { founded: 2016, instagram: 'phantomgrey.ng',
     gallery: [
       ['img/members/phantom-grey/meethaq-hotel.jpg', 'Meethaq Hotel, design image', 'DfhNbLOPjon'],

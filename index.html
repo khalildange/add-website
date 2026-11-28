@@ -85,6 +85,32 @@
     </div>
   </section>
 
+  <section class="section selected-work" id="work">
+    <div class="wrap">
+      <div class="section-head"><h2>Selected <em>work</em></h2><a href="directory.html">All members →</a></div>
+      <div class="work-strip">
+        <a class="work-item" href="studio.html?s=studio-ator">
+          <span class="wi-img"><img src="img/members/studio-ator/living-room.jpg" alt="Living room interior by Studio ATÓR" loading="lazy"></span>
+          <span class="wi-meta">Interiors</span>
+          <span class="wi-title">Living room</span>
+          <span class="wi-by">Studio ATÓR</span>
+        </a>
+        <a class="work-item" href="studio.html?s=by-ngogo">
+          <span class="wi-img"><img src="img/members/by-ngogo/emirs-palace-bida.jpg" alt="The Emir's Palace, Bida, photographed by By Ngogo" loading="lazy"></span>
+          <span class="wi-meta">Architecture &amp; photography</span>
+          <span class="wi-title">The Emir's Palace, Bida</span>
+          <span class="wi-by">By Ngogo</span>
+        </a>
+        <a class="work-item" href="studio.html?s=aw-clothiers">
+          <span class="wi-img"><img src="img/members/aw-clothiers/embroidered-gown.jpg" alt="Embroidered gown by AW Clothiers" loading="lazy"></span>
+          <span class="wi-meta">Fashion &amp; embroidery</span>
+          <span class="wi-title">Embroidered gown</span>
+          <span class="wi-by">AW Clothiers</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section happening" id="events">
     <div class="wrap">
       <div class="section-head"><h2>What's <em>coming up</em></h2><a href="events.html">Full calendar →</a></div>
@@ -101,6 +127,32 @@
         <li><span class="stage-when">2027</span><h3>2. Pilot District</h3><p>ADD becomes a recognised cluster: a shared map and signage, a regular Open Studios trail, a pop-up showroom and the first ADD Week.</p></li>
         <li><span class="stage-when">2028 onward</span><h3>3. Anchor Hub</h3><p>A physical home for ADD, with a showroom, material library, co-working and event space.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="section why-join" id="why-join">
+    <div class="wrap">
+      <div class="section-head"><h2>Why <em>join</em></h2><a href="membership.html">Compare the four tiers →</a></div>
+      <ol class="benefits">
+        <li><span class="b-n">01</span><h3>Be found</h3><p>A listing in the ADD directory and on the Open Studios map, where clients, developers and collectors look for Nigerian design.</p></li>
+        <li><span class="b-n">02</span><h3>Get referred</h3><p>A referral network across members, so work that isn't yours goes to someone you trust, and theirs comes to you.</p></li>
+        <li><span class="b-n">03</span><h3>Be in the room</h3><p>Open Studios participation, member rates for exhibitions and pop-ups, and early access to ADD Week.</p></li>
+        <li><span class="b-n">04</span><h3>Work across pillars</h3><p>Architects, fashion houses, makers and artists in one network, with mentorship pairing for emerging makers.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section behind-add" id="founders">
+    <div class="wrap founders-grid">
+      <div>
+        <p class="eyebrow clay">Who's behind ADD</p>
+        <h2>Founded in <em>Abuja</em></h2>
+      </div>
+      <div class="founders-copy">
+        <p class="lede">ADD is founded by <b>Arc. Audu Hauwa Idris</b> and <b>Aisha Usman Ndayako</b>, to bring Abuja's designers, makers and creative businesses together.</p>
+        <p>It is run as a shared platform, not one company's: an Advisory Circle with one member from each of the six pillars gives members a voice in the programme, and every major event features at least three pillars.</p>
+        <a class="linkish" href="about.html">More about ADD →</a>
+      </div>
     </div>
   </section>
 
@@ -161,14 +213,20 @@
     art: ['Painters', 'Sculptors', 'Mixed-media & textile artists', 'Galleries & art spaces', 'Curators', 'Printmakers', 'Fabricators & art foundries', 'Art advisors'],
     media: ['Editorial', 'Photography', 'Film', 'Branding', 'Social media studios', 'Event producers']
   };
-  const keys = Object.keys(DD.CATS);
+  const keys = ['featured', ...Object.keys(DD.CATS)];
   const tabs = document.getElementById('pillar-tabs'), panels = document.getElementById('pillar-panels');
-  const byCat = k => DD.STUDIOS.filter(s => s.cat === k).sort((a, b) => DD.rank(b) - DD.rank(a) || a.name.localeCompare(b.name));
-  tabs.innerHTML = keys.map((k, i) => { const n = byCat(k).length; return `<button type="button" role="tab" id="tab-${k}" aria-controls="panel-${k}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${DD.CATS[k]} <span class="pt-n">${n ? n : 'Founding spots open'}</span>${n ? `<span class="sr-only">${n === 1 ? ' member' : ' members'}</span>` : ''}</button>`; }).join('');
+  const sorted = list => list.sort((a, b) => DD.rank(b) - DD.rank(a) || a.name.localeCompare(b.name));
+  // Featured: one member from each pillar that has members, in pillar order
+  const featured = () => Object.keys(DD.CATS).map(k => sorted(DD.STUDIOS.filter(s => s.cat === k))[0]).filter(Boolean);
+  const byCat = k => k === 'featured' ? featured() : sorted(DD.STUDIOS.filter(s => s.cat === k));
+  const label = k => k === 'featured' ? 'Featured' : DD.CATS[k];
+  tabs.innerHTML = keys.map((k, i) => { const n = byCat(k).length; return `<button type="button" role="tab" id="tab-${k}" aria-controls="panel-${k}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${label(k)} <span class="pt-n">${n ? n : 'Founding spots open'}</span>${n ? `<span class="sr-only">${n === 1 ? ' member' : ' members'}</span>` : ''}</button>`; }).join('');
   panels.innerHTML = keys.map((k, i) => {
     const members = byCat(k);
     return `<div class="pillar-panel" role="tabpanel" id="panel-${k}" aria-labelledby="tab-${k}" tabindex="0"${i ? ' hidden' : ''}>
-      <div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${i + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p>${members.length ? `<a class="btn" href="directory.html?cat=${k}">All ${DD.esc(DD.CATS[k])} members</a>` : ''}</div>
+      ${k === 'featured'
+        ? `<div class="pp-intro"><span class="n">Across the pillars</span><h3>One from each pillar</h3><p>A member from every pillar that has members so far, from architecture to fashion to art. Use the tabs to see everyone in a pillar.</p><a class="btn" href="directory.html">All members</a></div>`
+        : `<div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${Object.keys(DD.CATS).indexOf(k) + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p>${members.length ? `<a class="btn" href="directory.html?cat=${k}">All ${DD.esc(DD.CATS[k])} members</a>` : ''}</div>`}
       ${members.length ? `<div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>` : `<div class="pp-open">
         <p class="eyebrow clay">Founding places open</p>
         <p class="pp-open-title">Be one of the first ${DD.esc(DD.CATS[k])} members of ADD.</p>

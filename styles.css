@@ -1529,3 +1529,12 @@ a:hover .zoom, .pillar:hover .art, .start-tile:hover .art, .work-gallery a:hover
 .why-join .benefits { margin-bottom: 0; }
 .behind-add { padding-top: clamp(56px, 7vw, 96px); padding-bottom: 0; }
 .behind-add .founders-grid { border-top: 0; padding-top: 0; }
+
+/* ---------- What's coming up: quarter cards as a slider ---------- */
+.q-cards.slider { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+.q-cards.slider::-webkit-scrollbar { display: none; }
+.q-cards.slider > .q-card { flex: 0 0 min(36%, 420px); scroll-snap-align: start; }
+.q-cards.slider:focus-visible { outline: 2px solid var(--clay); outline-offset: 6px; }
+@media (max-width: 960px) { .q-cards.slider > .q-card { flex-basis: min(58%, 380px); } }
+@media (max-width: 600px) { .q-cards.slider > .q-card { flex-basis: 82%; } }
+.slider > * { position: relative; }

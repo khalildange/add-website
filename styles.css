@@ -1842,3 +1842,47 @@ header.site .wrap { transition: padding .4s var(--ease-out); }
 .hero-xl { background: #111; }
 .js-motion .hero-xl > .hero-xl-media { top: -16%; bottom: -16%; height: auto; }
 .will-reveal.seen, .benefits li.will-reveal.seen { opacity: 1 !important; transform: none !important; clip-path: inset(0 0 0 0) !important; }
+
+
+/* ==========================================================================
+   FUNNEL PASS (Nov 2026): hero CTAs, featured cards, empty pillars, programme preview
+   ========================================================================== */
+/* Hero: a stronger dark scrim on the left, behind the headline */
+.hero-xl:has(.hero-video)::before { background: linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.62) 32%, rgba(0,0,0,.28) 62%, rgba(0,0,0,.08) 100%), linear-gradient(180deg, rgba(0,0,0,.1) 40%, rgba(0,0,0,.55) 100%); }
+@media (max-width: 760px) { .hero-xl:has(.hero-video)::before { background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.78) 100%); } }
+.hero-ctas { align-items: center; gap: 14px 26px; }
+.hero-ctas .btn.solid { background: var(--green); border-color: var(--green); color: #fff; }
+.hero-ctas .btn.solid:hover { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+.hero-link { color: #fff; font-weight: 500; text-decoration: underline; text-decoration-color: rgba(255,255,255,.45); text-underline-offset: 6px; text-decoration-thickness: 1px; transition: text-decoration-color .3s; }
+.hero-link:hover, .hero-link:focus-visible { text-decoration-color: var(--yellow); }
+
+/* Header: the longer CTA label stays on one line */
+.header-actions .btn.solid { white-space: nowrap; }
+
+/* Featured: three equal cards, each with a short bio and up to three tags */
+.pp-members.masonry.pp-featured > .studio { grid-column: span 2 !important; grid-row: auto !important; }
+.pp-members.masonry.pp-featured > .studio .frame .art, .pp-members.masonry.pp-featured > .studio .frame .logo-tile { aspect-ratio: 4 / 3; }
+.pp-members.masonry.pp-featured > .studio .studio-body p { display: -webkit-box !important; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.pp-members.masonry.pp-featured > .studio .tags { display: flex !important; flex-wrap: wrap; }
+.pp-members.masonry.pp-featured > .studio .tags li:nth-child(n+4) { display: none; }
+@media (max-width: 760px) { .pp-members.masonry.pp-featured > .studio { grid-column: 1 / -1 !important; } }
+
+/* Empty pillars: one clear action */
+.pp-open > .btn.solid { justify-self: start; align-self: flex-start; margin-top: 6px; }
+
+/* What's coming up: 2027 programme preview */
+.programme-preview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 32px 48px; padding: clamp(24px, 4vw, 44px); background: var(--surface, #fff); border: 1px solid var(--line); border-radius: 18px; }
+.pv-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.pv-intro .eyebrow { color: var(--green); }
+.pv-intro h3 { font-size: clamp(26px, 3vw, 36px); line-height: 1.1; letter-spacing: -.02em; }
+.pv-intro h3 em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--green); }
+.pv-intro .btn { margin-top: 8px; }
+.pv-formats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.pv-formats li { display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 2px solid var(--black); }
+.pv-formats li:first-child { border-top-color: var(--green); }
+.pv-n { font-size: 13px; font-weight: 600; letter-spacing: .08em; background: var(--yellow); color: var(--black); align-self: flex-start; padding: 1px 6px; }
+.pv-when { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--green); }
+.pv-formats h4 { font-size: 22px; letter-spacing: -.01em; }
+.pv-formats p { font-size: 15px; color: var(--ink-2, #4a4a4a); }
+@media (max-width: 960px) { .programme-preview { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .pv-formats { grid-template-columns: 1fr; gap: 22px; } }

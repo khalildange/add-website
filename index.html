@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<div class="topbar"><div class="wrap"><span>Now: <a href="list.html">register interest</a> · Founding membership opens January 2027</span><span>Kado, Abuja</span></div></div>
+<div class="topbar"><div class="wrap"><span>Founding membership opens January 2027 · <a href="list.html">Register founding interest now</a></span><span>Kado, Abuja</span></div></div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site">
@@ -41,14 +41,14 @@
         <li><a class="nav-link" href="about.html">About</a></li>
       </ul>
       <div class="nav-mobile-extra">
-        <a class="btn solid" href="membership.html">Become a member</a>
+        <a class="btn solid" href="list.html">Register founding interest</a>
         <a class="btn" href="contact.html">Contact</a>
         <a class="btn wa" data-wa data-wa-text="Hi ADD!">WhatsApp</a>
       </div>
     </nav>
     <div class="header-actions">
       <a class="btn ghost" href="contact.html">Contact</a>
-      <a class="btn solid" href="membership.html">Become a member</a>
+      <a class="btn solid" href="list.html">Register founding interest</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
     </div>
   </div>
@@ -68,7 +68,7 @@
       <p class="eyebrow">Abuja Design District</p>
       <h1>Abuja's home for <em>Nigerian design.</em></h1>
       <p class="hero-xl-lede">Fashion, architecture, interiors, art and product design, showcased together. Collaboration supported. Creative businesses connected with opportunity.</p>
-      <div class="cta-row"><a class="btn on-dark" href="#whos-in">Find your way in ↓</a></div>
+      <div class="cta-row hero-ctas"><a class="btn solid" href="list.html">Register founding interest</a><a class="hero-link" href="#whos-in">Explore the district <span aria-hidden="true">↓</span></a></div>
     </div>
   </section>
 
@@ -129,7 +129,19 @@
   <section class="section happening" id="events">
     <div class="wrap">
       <div class="section-head"><h2>What's <em>coming up</em></h2><a href="events.html">Full calendar →</a></div>
-      <div class="q-cards" id="q-cards"></div>
+      <div class="programme-preview">
+        <div class="pv-intro">
+          <p class="eyebrow">2027 programme preview</p>
+          <h3>The first ADD calendar lands in <em>2027.</em></h3>
+          <p>Dates and the first sector in focus are being set now. These are the formats to expect.</p>
+          <a class="btn solid" href="#newsletter" data-notify>Get notified when Q1 drops <span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="pv-formats">
+          <li><span class="pv-n">01</span><span class="pv-when">Roughly once a quarter</span><h4>Sector in Focus</h4><p>Each quarter, the calendar puts one of the six pillars in the spotlight.</p></li>
+          <li><span class="pv-n">02</span><span class="pv-when">First trail: February 2027</span><h4>Open Studios</h4><p>A trail through member studios and showrooms, with a printed and digital map.</p></li>
+          <li><span class="pv-n">03</span><span class="pv-when">First edition: late 2027</span><h4>ADD Week</h4><p>The flagship festival: exhibitions, talks, open studios and a fashion presentation.</p></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -204,10 +216,10 @@
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
           <p data-status role="status" class="form-status"></p>
         </form>
-        <div class="foot-actions"><a class="btn solid" href="list.html">Register interest</a><a class="btn wa" data-wa data-wa-text="Hi ADD!">Chat on WhatsApp</a></div>
+        <div class="foot-actions"><a class="btn solid" href="list.html">Register founding interest</a><a class="btn wa" data-wa data-wa-text="Hi ADD!">Chat on WhatsApp</a></div>
       </div>
       <div><h2 class="foot-h">Explore</h2><ul><li><a href="directory.html">Directory</a></li><li><a href="projects.html">Projects</a></li><li><a href="abuja.html">The District</a></li><li><a href="programmes.html">Programmes</a></li><li><a href="events.html">Events</a></li><li><a href="about.html">About</a></li></ul></div>
-      <div><h2 class="foot-h">Get involved</h2><ul><li><a href="membership.html">Membership</a></li><li><a href="list.html">Register interest</a></li><li><a href="contact.html?topic=sponsor">Sponsorship &amp; partnerships</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h2 class="foot-h">Get involved</h2><ul><li><a href="membership.html">Membership</a></li><li><a href="list.html">Register founding interest</a></li><li><a href="contact.html?topic=sponsor">Sponsorship &amp; partnerships</a></li><li><a href="contact.html">Contact</a></li></ul></div>
       <div><h2 class="foot-h">Follow</h2><ul><li><a data-social="instagram">Instagram</a></li><li><a data-social="linkedin">LinkedIn</a></li><li><a data-social="x">X</a></li><li><a data-social="tiktok">TikTok</a></li><li><a data-wa-channel>WhatsApp Channel</a></li></ul></div>
     </div>
     <div class="foot-bottom"><span>© 2026 ADD · Abuja Design District · <a href="privacy.html">Privacy</a> · <a href="terms.html">Membership terms</a></span><span>Made in Abuja · <a href="#top" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Back to top ↑</a></span></div>
@@ -227,6 +239,12 @@
     craft: ['Dyers', 'Brass & glass workers', 'Leatherworkers', 'Carvers', 'Craft guilds'],
     art: ['Painters', 'Sculptors', 'Mixed-media & textile artists', 'Galleries & art spaces', 'Curators', 'Printmakers', 'Fabricators & art foundries', 'Art advisors'],
     media: ['Editorial', 'Photography', 'Film', 'Branding', 'Social media studios', 'Event producers']
+  };
+  // Short pitch for pillars that have no members yet
+  const pitch = {
+    objects: 'No furniture or object makers have joined yet, so the first ones in will shape this pillar.',
+    craft: 'Heritage craft has no founding members yet: be one of the first artisans and guilds in ADD.',
+    media: 'Media & Experience is still open: be one of the first studios telling the story of Nigerian design.'
   };
   const keys = ['featured', ...Object.keys(DD.CATS)];
   const tabs = document.getElementById('pillar-tabs'), panels = document.getElementById('pillar-panels');
@@ -248,13 +266,13 @@
       ${k === 'featured'
         ? `<div class="pp-intro"><span class="n">Across the pillars</span><h3>A first look</h3><p>A few of our members, from architecture and interiors to fashion. Use the tabs to see everyone in a pillar.</p><a class="btn" href="directory.html">All members</a></div>`
         : `<div class="pp-intro"><div class="art wide ${art[k]}"></div><span class="n">0${Object.keys(DD.CATS).indexOf(k) + 1}</span><h3>${DD.CATS[k]}</h3><p>${DD.CAT_INFO[k]}</p>${members.length ? `<a class="btn" href="directory.html?cat=${k}">All ${DD.esc(DD.CATS[k])} members</a>` : ''}</div>`}
-      ${members.length ? `<div class="studio-grid pp-members">${members.map(DD.card).join('')}</div>` : `<div class="pp-open">
-        <p class="eyebrow clay">Founding places open</p>
-        <p class="pp-open-title">Be one of the first ${DD.esc(DD.CATS[k])} members of ADD.</p>
-        <p>Founding members for this pillar will be announced in Q1 2027. Membership opens in January 2027, and registering interest now commits you to nothing.</p>
+      ${members.length ? `<div class="studio-grid pp-members${k === 'featured' ? ' pp-featured' : ''}">${members.map(DD.card).join('')}</div>` : `<div class="pp-open">
+        <p class="eyebrow clay">Founding spots open</p>
+        <p class="pp-open-title">Claim a founding spot in ${DD.esc(DD.CATS[k])}.</p>
+        <p>${pitch[k] || ''} Membership opens in January 2027, and registering interest now commits you to nothing.</p>
         <p class="pp-who-h">Who it's for</p>
         <ul class="tags">${who[k].map(t => `<li>${t}</li>`).join('')}</ul>
-        <div class="cta-row"><a class="btn solid" href="list.html">Register interest</a><a class="btn" href="membership.html">Ways to join</a></div>
+        <a class="btn solid" href="list.html?pillar=${k}">Register interest <span aria-hidden="true">→</span></a>
       </div>`}
     </div>`;
   }).join('');
@@ -276,15 +294,14 @@
     });
   });
 
-  // ---- What's coming up: one card per quarter, from SECTOR_QUARTERS in site.js ----
-  const months = { Q1: 'Jan – Mar', Q2: 'Apr – Jun', Q3: 'Jul – Sep', Q4: 'Oct – Dec' };
-  document.getElementById('q-cards').innerHTML = SECTOR_QUARTERS.map((x, i) => `
-    <a class="q-card${i === 0 ? ' q-now' : ''}" href="events.html#sector-quarters">
-      <span class="q-when"><b>${x.q}</b> ${x.year}<small>${months[x.q] || ''}</small></span>
-      <span class="q-label">Sector in focus</span>
-      <h3><span class="sr-only">${x.q} ${x.year}: </span>${x.sector ? SECTOR_NAMES[x.sector] : 'To be announced'}</h3>
-    </a>`).join('');
-  makeSlider(document.getElementById('q-cards'), 'quarter');
+  // ---- "Get notified" scrolls to the signup and puts the cursor in the email field ----
+  document.querySelectorAll('[data-notify]').forEach(a => a.addEventListener('click', e => {
+    const f = document.getElementById('email');
+    if (!f) return;
+    e.preventDefault();
+    document.getElementById('newsletter').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    setTimeout(() => f.focus({ preventScroll: true }), 600);
+  }));
 </script>
 </body>
 </html>

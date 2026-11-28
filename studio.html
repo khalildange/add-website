@@ -90,7 +90,7 @@
   } else {
     const d = DD.DETAILS[s.slug] || {};
     const cat = DD.CATS[s.cat];
-    const about = d.about || (s.blurb ? [s.blurb] : []);
+    const about = d.about || []; // the blurb already shows under the name, so don't repeat it here
     const services = d.services || s.tags || [];
     const email = d.email || '';
     const waText = d.whatsapp ? `Hi ${s.name}, I found you on ADD and I'd like to ask about a project.` : `Hi ADD, I'd like to get in touch with ${s.name}.`;
@@ -140,7 +140,7 @@
         </aside>
         <div class="prose">
           <h2>About the studio</h2>
-          ${about.length ? about.map(p => `<p>${e(p)}</p>`).join('') : `<p>A fuller profile is coming soon. To get in touch with ${e(s.name)}, send an enquiry below and ADD will pass it on.</p>`}
+          ${about.length ? about.map(p => `<p>${e(p)}</p>`).join('') : `<p>To work with ${e(s.name)}, send an enquiry below and ADD will pass it on${d.instagram ? `, or see more of their work on <a class="linkish" href="https://www.instagram.com/${e(d.instagram)}/" target="_blank" rel="noopener">Instagram</a>` : ''}.</p>`}
         </div>
       </div>
 
